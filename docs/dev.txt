@@ -2,8 +2,29 @@
 XXXX
 ====
 
-Note about forecast data
-========================
+
+Sensors history
+===============
+
+Most of the sensors for this plugin have no history enabled by default. For example forecast data have no history as there is no need to keep forecast history!
+
+Only the following sensors are configured to store the history:
+
+* current_barometer_value
+* current_humidity
+* current_temperature
+* current_uv
+* current_wind_direction
+* current_wind_gust
+* current_wind_speed
+
+Timeout on sensors
+==================
+
+All sensors have a timeout set to 65 minutes : as the interval between each check on weather.com is set to 30min, we let the plugin to encounter 1 failure.
+
+Forecast data
+=============
 
 Here are the raw data from the http://www.weather.com API for 1 day: ::
 
