@@ -1,0 +1,1076 @@
+{ 
+    "products" : [],
+    "configuration": [],
+    "commands": {},
+    "xpl_commands": {}, 
+    "sensors": {
+        "current_barometer_value": {
+            "name": "Barometer value",
+            "incremental" : false,
+            "data_type": "DT_Pression",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_barometer_direction": {
+            "name": "Barometer direction",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_dewpoint": {
+            "name": "Dewpoint",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_feels_like": {
+            "name": "Feels like",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_humidity": {
+            "name": "Humidity",
+            "incremental" : false,
+            "data_type": "DT_Humidity",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_last_updated": {
+            "name": "Last updated",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_moon_phase": {
+            "name": "Moon phase",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_station": {
+            "name": "Station (location)",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_temperature": {
+            "name": "Temperature",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_text": {
+            "name": "Weather description",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_uv": {
+            "name": "UV index",
+            "incremental" : false,
+            "data_type": "DT_Number",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_visibility": {
+            "name": "Visibility",
+            "incremental" : false,
+            "data_type": "DT_Number",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_wind_direction": {
+            "name": "Wind direction",
+            "incremental" : false,
+            "data_type": "DT_Angle",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_wind_gust": {
+            "name": "Wind gust",
+            "incremental" : false,
+            "data_type": "DT_kmhSpeed",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_wind_speed": {
+            "name": "Wind speed",
+            "incremental" : false,
+            "data_type": "DT_kmhSpeed",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "current_wind_text": {
+            "name": "Wind text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_day": {
+            "name": "Day 0 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_temperature_high": {
+            "name": "Day 0 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_temperature_low": {
+            "name": "Day 0 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_sunset": {
+            "name": "Day 0 - Sunset",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_sunrise": {
+            "name": "Day 0 - Sunrise",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_day_humidity": {
+            "name": "Day 0 - Day : humidity",
+            "incremental" : false,
+            "data_type": "DT_Humidity",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_day_text": {
+            "name": "Day 0 - Day : text condition",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_day_chance_precipitation": {
+            "name": "Day 0 - Day : chance to get precipitations",
+            "incremental" : false,
+            "data_type": "DT_Scaling",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_night_humidity": {
+            "name": "Day 0 - Night : humidity",
+            "incremental" : false,
+            "data_type": "DT_Humidity",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_night_text": {
+            "name": "Day 0 - Night : text condition",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_0_night_chance_precipitation": {
+            "name": "Day 0 - Night : chance to get precipitations",
+            "incremental" : false,
+            "data_type": "DT_Scaling",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_day": {
+            "name": "Day 1 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_temperature_high": {
+            "name": "Day 1 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_temperature_low": {
+            "name": "Day 1 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_sunset": {
+            "name": "Day 1 - Sunset",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_sunrise": {
+            "name": "Day 1 - Sunrise",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_day_humidity": {
+            "name": "Day 1 - Day : humidity",
+            "incremental" : false,
+            "data_type": "DT_Humidity",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_day_text": {
+            "name": "Day 1 - Day : text condition",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_day_chance_precipitation": {
+            "name": "Day 1 - Day : chance to get precipitations",
+            "incremental" : false,
+            "data_type": "DT_Scaling",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_night_humidity": {
+            "name": "Day 1 - Night : humidity",
+            "incremental" : false,
+            "data_type": "DT_Humidity",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_night_text": {
+            "name": "Day 1 - Night : text condition",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_1_night_chance_precipitation": {
+            "name": "Day 1 - Night : chance to get precipitations",
+            "incremental" : false,
+            "data_type": "DT_Scaling",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        }
+    },
+    "xpl_stats": {
+       "current_barometer_value": {
+            "name": "Barometer value",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "pressure"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_barometer_value"
+                        }
+                    ]
+               }
+       },
+       "current_barometer_direction": {
+            "name": "Barometer direction",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "barometer_direction"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_barometer_direction"
+                        }
+                    ]
+               }
+       },
+       "current_dewpoint": {
+            "name": "Dewpoint",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "temp_dewpoint"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_dewpoint"
+                        }
+                    ]
+               }
+       },
+       "current_feels_like": {
+            "name": "Feels like",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "temp_feels_like"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_feels_like"
+                        }
+                    ]
+               }
+       },
+       "current_humidity": {
+            "name": "Humidity",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "humidity"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_humidity"
+                        }
+                    ]
+               }
+       },
+       "current_last_updated": {
+            "name": "Last updated",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "last_updated"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_last_updated"
+                        }
+                    ]
+               }
+       },
+       "current_moon_phase": {
+            "name": "Moon phase",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "moon_phase"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_moon_phase"
+                        }
+                    ]
+               }
+       },
+       "current_station": {
+            "name": "Current station",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "current_station"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_station"
+                        }
+                    ]
+               }
+       },
+       "current_temperature": {
+            "name": "Temperature",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "temp"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_temperature"
+                        }
+                    ]
+               }
+       },
+       "current_text": {
+            "name": "Weather description",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "text"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_text"
+                        }
+                    ]
+               }
+       },
+       "current_uv": {
+            "name": "UV index",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "uv"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_text"
+                        }
+                    ]
+               }
+       },
+       "current_visibility": {
+            "name": "Visibility",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "visibility"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_visibility"
+                        }
+                    ]
+               }
+       },
+       "current_wind_direction": {
+            "name": "Wind direction",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "direction"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_wind_direction"
+                        }
+                    ]
+               }
+       },
+       "current_wind_gust": {
+            "name": "Wind gust",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "speed_gust"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_wind_gust"
+                        }
+                    ]
+               }
+       },
+       "current_wind_speed": {
+            "name": "Wind speed",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "speed"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_wind_speed"
+                        }
+                    ]
+               }
+       },
+       "current_wind_text": {
+            "name": "Wind description",
+            "schema": "sensor.basic",
+            "parameters": {
+                    "static": [
+            {
+                "key": "type",
+                "value": "wind_text"
+            }
+            ],
+                    "device": [],
+                    "dynamic": [
+                        {
+                             "key": "current",
+                             "ignore_values": "",
+                             "sensor": "current_wind_text"
+                        }
+                    ]
+               }
+       },
+       "forecast_day_0": {
+            "name": "Forecast day 0",
+            "schema": "weather.forecast",
+            "parameters": {
+                "static": [
+                    {
+                        "key": "provider",
+                        "value": "weather.com"
+                    },
+                    {
+                        "key": "day",
+                        "value": "0"
+                    }
+                ],
+                "device": [],
+                "dynamic": [
+                    {
+                        "key": "day-name",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_day"
+                    },
+                    {
+                        "key": "temperature-high",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_temperature_high"
+                    },
+                    {
+                        "key": "temperature-low",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_temperature_low"
+                    },
+                    {
+                        "key": "sunset",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_sunset"
+                    },
+                    {
+                        "key": "sunrise",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_sunrise"
+                    },
+                    {
+                        "key": "day-humidity",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_day_humidity"
+                    },
+                    {
+                        "key": "day-text",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_day_text"
+                    },
+                    {
+                        "key": "day-precip",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_day_chance_precipitation"
+                    },
+                    {
+                        "key": "night-humidity",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_night_humidity"
+                    },
+                    {
+                        "key": "night-text",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_night_text"
+                    },
+                    {
+                        "key": "night-precip",
+                        "ignore_values": "",
+                        "sensor": "forecast_0_night_chance_precipitation"
+                    }
+                ]
+            }
+       },
+       "forecast_day_1": {
+            "name": "Forecast day 1",
+            "schema": "weather.forecast",
+            "parameters": {
+                "static": [
+                    {
+                        "key": "provider",
+                        "value": "weather.com"
+                    },
+                    {
+                        "key": "day",
+                        "value": "1"
+                    }
+                ],
+                "device": [],
+                "dynamic": [
+                    {
+                        "key": "day-name",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_day"
+                    },
+                    {
+                        "key": "temperature-high",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_temperature_high"
+                    },
+                    {
+                        "key": "temperature-low",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_temperature_low"
+                    },
+                    {
+                        "key": "sunset",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_sunset"
+                    },
+                    {
+                        "key": "sunrise",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_sunrise"
+                    },
+                    {
+                        "key": "day-humidity",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_day_humidity"
+                    },
+                    {
+                        "key": "day-text",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_day_text"
+                    },
+                    {
+                        "key": "day-precip",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_day_chance_precipitation"
+                    },
+                    {
+                        "key": "night-humidity",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_night_humidity"
+                    },
+                    {
+                        "key": "night-text",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_night_text"
+                    },
+                    {
+                        "key": "night-precip",
+                        "ignore_values": "",
+                        "sensor": "forecast_1_night_chance_precipitation"
+                    }
+                ]
+            }
+       }
+    },
+    "device_types": {
+        "weather.weather": {
+            "description": "Current weather conditions from www.weather.com", 
+            "id": "weather.weather", 
+            "name": "Weather conditions",
+            "commands": [],
+            "sensors": ["current_barometer_value", 
+                        "current_barometer_direction",
+                        "current_dewpoint",
+                        "current_feels_like",
+                        "current_humidity",
+                        "current_last_updated",
+                        "current_moon_phase",
+                        "current_station",
+                        "current_temperature",
+                        "current_text",
+                        "current_uv",
+                        "current_visibility",
+                        "current_wind_direction",
+                        "current_wind_gust",
+                        "current_wind_speed",
+                        "current_wind_text",
+                        "forecast_0_day",
+                        "forecast_0_temperature_high",
+                        "forecast_0_temperature_low",
+                        "forecast_0_sunset",
+                        "forecast_0_sunrise",
+                        "forecast_0_day_humidity",
+                        "forecast_0_day_text",
+                        "forecast_0_day_chance_precipitation",
+                        "forecast_0_night_humidity",
+                        "forecast_0_night_text",
+                        "forecast_0_night_chance_precipitation",
+                        "forecast_1_day",
+                        "forecast_1_temperature_high",
+                        "forecast_1_temperature_low",
+                        "forecast_1_sunset",
+                        "forecast_1_sunrise",
+                        "forecast_1_day_humidity",
+                        "forecast_1_day_text",
+                        "forecast_1_day_chance_precipitation",
+                        "forecast_1_night_humidity",
+                        "forecast_1_night_text",
+                        "forecast_1_night_chance_precipitation"],
+            "parameters": [
+                {
+                    "key": "device",
+                    "xpl" : true,
+                    "description": "Location code. Example for Paris : FRXX0076",
+                    "type": "string"
+                }
+            ]
+        }
+    }, 
+    "identity": {
+        "author": "Fritz", 
+        "author_email": "fritz.smh at gmail.com", 
+        "tags": ["weather"],
+        "dependencies": [], 
+        "description": "Weather plugin based on weather.com informations", 
+        "domogik_min_version": "0.4.0", 
+        "name": "weather", 
+        "type": "plugin", 
+        "version": "1.0"
+    }, 
+    "json_version": 2
+}

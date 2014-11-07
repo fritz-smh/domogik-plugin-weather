@@ -1,0 +1,81 @@
+====
+XXXX
+====
+
+Note about forecast data
+========================
+
+Here are the raw data from the http://www.weather.com API for 1 day: ::
+
+        {
+            'day_of_week': u'Thursday',
+            'high': u'14',
+            'sunset': u'5: 43PM',
+            'low': u'11',
+            'night': {
+                'brief_text': u'RainLate',
+                'text': u'RainLate',
+                'chance_precip': u'100',
+                'humidity': u'84',
+                'wind': {
+                    'gust': u'N/A',
+                    'direction': u'177',
+                    'speed': u'32',
+                    'text': u'S'
+                },
+                'icon': u'12'
+            },
+            'date': u'Nov6',
+            'day': {
+                'brief_text': u'MCloudy',
+                'text': u'MostlyCloudy',
+                'chance_precip': u'20',
+                'humidity': u'81',
+                'wind': {
+                    'gust': u'N/A',
+                    'direction': u'162',
+                    'speed': u'20',
+                    'text': u'SSE'
+                },
+                'icon': u'28'
+            },
+            'sunrise': u'7: 54AM'
+        },
+
+The plugin does not use all these datas.
+
+A specific xPL schema has been defined for the forecast: 
+
+* **xpl-stat** ::
+
+    xpl-stat
+    {
+    ...
+    }
+    weather.forecast
+    {
+        provider=weather.com
+        day=<number of the day : 0....>
+        day_name=...
+        temperature_high=...
+        temperature_low=...
+        sunset=...
+        sunrise=...
+        day_humidity=...
+        day_text=...
+        day_chance_precipitation=...
+        night_humidity=...
+        night_text=...
+        night_chance_precipitation=...
+        day=...
+        temperature_high=...
+        temperature_low=...
+        sunset=...
+        sunrise=...
+        day_humidity=...
+        day_text=...
+        day_chance_precipitation=...
+        night_humidity=...
+        night_text=...
+        night_chance_precipitation=...
+    }
