@@ -100,7 +100,7 @@ class WeatherManager(XplPlugin):
         msg = XplMessage()
         msg.set_type("xpl-stat")
         msg.set_schema("weather.forecast")
-        msg.add_data({"provider" : "weather.com"})
+        msg.add_data({"provider" : "yahoo weather"})
         for key in data:
             val = data[key]
             if val != "":

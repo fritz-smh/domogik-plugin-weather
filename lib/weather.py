@@ -21,7 +21,7 @@ along with Domogik. If not, see U{http://www.gnu.org/licenses}.
 Plugin purpose
 ==============
 
-Sent weather informations from weather.com
+Sent weather informations from yahoo weather
 
 Implements
 ==========
@@ -36,9 +36,14 @@ Implements
 
 import os
 import traceback
-import domogik_packages.plugin_weather.lib.pywapi as pywapi
-import pprint
+import json
+# python 2 and 3
+try:
+    from urllib.request import urlopen
+except ImportError:
+    from urllib import urlopen
 
+YAHOO_WEATHER_URL = "https://query.yahooapis.com/v1/public/yql?q="
 
 class Weather:
     """ Weather.com
@@ -76,65 +81,110 @@ class Weather:
                 address = self._get_parameter_for_feature(a_device, "xpl_stats", "current_temperature", "device")
                 self.log.info("Start getting weather for {0} ({1})".format(a_device['name'], address))
 
-                # grab weather.com data
-                data = pywapi.get_weather_from_weather_com(address) 
+                # grab weather data
+
+                # More informations here : https://developer.yahoo.com/weather/#get-started
+                query = "select * from weather.forecast where woeid = {0} and u = 'c'".format(address)
+                weather_url = "{0}{1}&format=json".format(YAHOO_WEATHER_URL, query)
+                self.log.debug("Url called is {0}".format(weather_url))
+                response = urlopen(weather_url)
+                raw_data = response.read().decode('utf-8')
+                data = json.loads(raw_data)
                 self.log.debug("Raw data for {0} : {1}".format(address, data))
 
                 ### send current data over xPL
-                cur = data['current_conditions']
+                cur = data['query']['results']['channel']
                 # current_barometer_value
-                self._callback_sensor_basic(address, "pressure", cur['barometer']['reading'])
+                # weather.com # self._callback_sensor_basic(address, "pressure", cur['barometer']['reading'])
+                self._callback_sensor_basic(address, "pressure", cur['atmosphere']['pressure'])
+
                 # current_barometer_direction
-                self._callback_sensor_basic(address, "barometer_direction", cur['barometer']['direction'])
+                # weather.com # self._callback_sensor_basic(address, "barometer_direction", cur['barometer']['direction'])
+                # yahoo weather # N/A
+
                 # current_dewpoint
-                self._callback_sensor_basic(address, "temp_dewpoint", cur['dewpoint'])
+                # weather.com # self._callback_sensor_basic(address, "temp_dewpoint", cur['dewpoint'])
+                # yahoo weather # N/A
+
                 # current_feels_like
-                self._callback_sensor_basic(address, "temp_feels_like", cur['feels_like'])
+                # weather.com # self._callback_sensor_basic(address, "temp_feels_like", cur['feels_like'])
+                self._callback_sensor_basic(address, "temp_feels_like", cur['wind']['chill'])
+
                 # current_humidity
-                self._callback_sensor_basic(address, "humidity", cur['humidity'])
+                # weather.com # self._callback_sensor_basic(address, "humidity", cur['humidity'])
+                self._callback_sensor_basic(address, "humidity", cur['atmosphere']['humidity'])
+
                 # current_last_updated
-                self._callback_sensor_basic(address, "last_updated", cur['last_updated'])
+                # weather.com # self._callback_sensor_basic(address, "last_updated", cur['last_updated'])
+                self._callback_sensor_basic(address, "last_updated", cur['lastBuildDate'])
+
                 # current_moon_phase
-                self._callback_sensor_basic(address, "moon_phase", cur['moon_phase']['text'])
+                # weather.com # self._callback_sensor_basic(address, "moon_phase", cur['moon_phase']['text'])
+                # yahoo weather # N/A
+
                 # current_station
-                self._callback_sensor_basic(address, "current_station", cur['station'])
+                # weather.com # self._callback_sensor_basic(address, "current_station", cur['station'])
+                self._callback_sensor_basic(address, "current_station", "{0} ({1})".format(cur['location']['city'], cur['location']['country']))
+
                 # current_temperature
-                self._callback_sensor_basic(address, "temp", cur['temperature'])
+                # weather.com # self._callback_sensor_basic(address, "temp", cur['temperature'])
+                self._callback_sensor_basic(address, "temp", cur['item']['condition']['temp'])
+
                 # current_text
-                self._callback_sensor_basic(address, "text", cur['text'])
+                # weather.com # self._callback_sensor_basic(address, "text", cur['text'])
+                self._callback_sensor_basic(address, "text", cur['item']['condition']['text'])
+
+                # current_code
+                # weather.com # N/A
+                self._callback_sensor_basic(address, "code", cur['item']['condition']['code'])
+
                 # current_uv
-                self._callback_sensor_basic(address, "uv", cur['uv']['index'])
+                # weather.com # self._callback_sensor_basic(address, "uv", cur['uv']['index'])
+                # yahoo weather # N/A
+
                 # current_visibility
-                self._callback_sensor_basic(address, "visibility", cur['visibility'])
+                # weather.com # self._callback_sensor_basic(address, "visibility", cur['visibility'])
+                self._callback_sensor_basic(address, "visibility", cur['atmosphere']['visibility'])
+
                 # current_wind_direction
+                # weather.com # self._callback_sensor_basic(address, "direction", cur['wind']['direction'])
                 self._callback_sensor_basic(address, "direction", cur['wind']['direction'])
+
                 # current_wind_gust
-                self._callback_sensor_basic(address, "speed_gust", cur['wind']['gust'])
-                # current_wind_speed"],
+                # weather.com # self._callback_sensor_basic(address, "speed_gust", cur['wind']['gust'])
+                # yahoo weather # N/A
+
+                # current_wind_speed
+                # weather.com # self._callback_sensor_basic(address, "speed", cur['wind']['speed'])
                 self._callback_sensor_basic(address, "speed", cur['wind']['speed'])
-                # current_wind_text"],
-                self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
+
+                # current_wind_text
+                # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
+                # yahoo weather # N/A
+
+                # current_sunset
+                # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
+                self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
+
+                # current_sunrise
+                # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
+                self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
+
 
                 ### send forecast data over xPL
                 day_num = 0
-                for day in data['forecasts']:
+                for day in data['query']['results']['channel']['item']['forecast']:
                     print day
                     data = {'day' : day_num,
                             'device' : address,
-                            'day-name' : day['day_of_week'],
+                            'day-name' : day['day'],
                             'temperature-high' : day['high'],
                             'temperature-low' : day['low'],
-                            'sunset' : day['sunset'],
-                            'sunrise' : day['sunrise'],
-                            'day-humidity' : day['day']['humidity'],
-                            'day-text' : day['day']['text'],
-                            'day-precip' : day['day']['chance_precip'],
-                            'night-humidity' : day['night']['humidity'],
-                            'night-text' : day['night']['text'],
-                            'night-precip' : day['night']['chance_precip']}
+                            'condition-text' : day['text'],
+                            'condition-code' : day['code']}
                     self._callback_weather_forecast(data)
                     day_num += 1
 
                 self.log.info("Data successfully sent for {0}".format(address))
             except:
-                self.log.error("Error while getting data from weather.com : {0}".format(traceback.format_exc()))
+                self.log.error("Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
