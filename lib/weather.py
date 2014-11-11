@@ -69,7 +69,7 @@ class Weather:
                 self.get_weather(devices)
             except:
                 self.log.error(u"Error while call get_weather : {1}".format(traceback.format_exc()))
-            self.log.info("Wait for {0} minutes".format(self._interval))
+            self.log.info(u"Wait for {0} minutes".format(self._interval))
             self._stop.wait(self._interval*60)
 
     def get_weather(self, devices):
@@ -79,18 +79,18 @@ class Weather:
                 # get the device address in the 'current_temperature' sensor. Keep in mind that all the sensors 
                 # for the device type 'weather.weather' has the same address, so we can take the one we want!
                 address = self._get_parameter_for_feature(a_device, "xpl_stats", "current_temperature", "device")
-                self.log.info("Start getting weather for {0} ({1})".format(a_device['name'], address))
+                self.log.info(u"Start getting weather for {0} ({1})".format(a_device['name'], address))
 
                 # grab weather data
 
                 # More informations here : https://developer.yahoo.com/weather/#get-started
                 query = "select * from weather.forecast where woeid = {0} and u = 'c'".format(address)
                 weather_url = "{0}{1}&format=json".format(YAHOO_WEATHER_URL, query)
-                self.log.debug("Url called is {0}".format(weather_url))
+                self.log.debug(u"Url called is {0}".format(weather_url))
                 response = urlopen(weather_url)
                 raw_data = response.read().decode('utf-8')
                 data = json.loads(raw_data)
-                self.log.debug("Raw data for {0} : {1}".format(address, data))
+                self.log.debug(u"Raw data for {0} : {1}".format(address, data))
 
                 ### send current data over xPL
                 cur = data['query']['results']['channel']
@@ -185,6 +185,6 @@ class Weather:
                     self._callback_weather_forecast(data)
                     day_num += 1
 
-                self.log.info("Data successfully sent for {0}".format(address))
+                self.log.info(u"Data successfully sent for {0}".format(address))
             except:
-                self.log.error("Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
+                self.log.error(u"Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
