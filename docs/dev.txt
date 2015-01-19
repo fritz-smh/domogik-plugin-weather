@@ -1,6 +1,6 @@
-====
-XXXX
-====
+========================
+Development informations
+========================
 
 
 Sensors history
