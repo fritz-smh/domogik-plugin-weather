@@ -48,3 +48,5 @@ Condition codes
 ===============
 
 Condition codes and texts are listed here: https://developer.yahoo.com/weather/documentation.html
+
+You can find some code to translate the condition codes to css class for a weather css icon library here : https://gist.github.com/aloncarmel/8575527
