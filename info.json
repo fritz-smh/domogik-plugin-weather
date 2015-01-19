@@ -1067,7 +1067,7 @@
                 {
                     "key": "device",
                     "xpl" : true,
-                    "description": "Location code. Example for Paris : FRXX0076",
+                    "description": "Location code. Example for Paris : 615702",
                     "type": "string"
                 }
             ]
