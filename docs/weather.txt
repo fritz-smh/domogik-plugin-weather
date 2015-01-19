@@ -1,0 +1,48 @@
+.. _index:
+
+==============
+Plugin weather
+==============
+
+Purpose
+=======
+
+The weather plugin uses the online service `Yahoo! Weather <https://weather.yahoo.com/>`_ to grab weather informations.
+
+Dependencies
+============
+
+There is no dependency.
+
+Plugin configuration
+====================
+
+There is no global configuration options for this plugin.
+
+Create the domogik devices
+==========================
+
+Domogik device type : weather.weather
+-------------------------------------
+
+1 parameter is needed for a domogik device creation:
+
+===================== =========================== ======================================================================
+Key                   Type                        Description
+===================== =========================== ======================================================================
+device                string                      The location code for your city. Example for Paris : 615702
+===================== =========================== ======================================================================
+
+To find the location code for your city, just go on https://weather.yahoo.com/ . Then, search for your town. You will be redirected to a new page with an url like this : https://weather.yahoo.com/france/%C3%AEle-de-france/paris-615702/ (for Paris).
+The last part of the url, after the "-" (minus) is the location code. In our example, the location code for Paris is 615702.
+
+Start the plugin
+================
+
+You can now start the plugin (start button) and use the created domogik devices.
+
+Set up your widgets on the user interface
+=========================================
+
+You can now place the widgets of your devices features on the user interface.
+
