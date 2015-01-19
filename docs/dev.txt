@@ -1,0 +1,52 @@
+========================
+Development informations
+========================
+
+
+Sensors history
+===============
+
+Most of the sensors for this plugin have no history enabled by default. For example forecast data have no history as there is no need to keep forecast history!
+
+Only the following sensors are configured to store the history:
+
+* current_barometer_value
+* current_humidity
+* current_temperature
+* current_wind_direction
+* current_wind_gust
+* current_wind_speed
+
+Timeout on sensors
+==================
+
+All sensors have a timeout set to 65 minutes : as the interval between each check on weather.com is set to 30min, we let the plugin to encounter 1 failure.
+
+Forecast data
+=============
+
+A specific xPL schema has been defined for the forecast: 
+
+* **xpl-stat** ::
+
+    xpl-stat
+    {
+    ...
+    }
+    weather.forecast
+    {
+        provider=yahoo weather
+        day=<number of the day : 0....>
+        day-name=...
+        temperature-high=...
+        temperature-low=...
+        condition-text=...
+        condition-code=...
+    }
+
+Condition codes
+===============
+
+Condition codes and texts are listed here: https://developer.yahoo.com/weather/documentation.html
+
+You can find some code to translate the condition codes to css class for a weather css icon library here : https://gist.github.com/aloncarmel/8575527
