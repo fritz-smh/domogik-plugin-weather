@@ -2,6 +2,11 @@
 Changelog
 =========
 
+1.1
+===
+
+* Fix : current temperature history is now storred
+
 1.0
 ===
 
