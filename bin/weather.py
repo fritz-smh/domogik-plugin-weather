@@ -83,7 +83,7 @@ class WeatherManager(XplPlugin):
         """
         self.log.debug(u"Values for {0} on {1} : {2}".format(w_device, w_type, w_value))
         if w_value == "" or w_value is None:
-            self.log.warning("Empty value for {0} on {1}. The xPL message will not be sent".format(w_device, w_type))
+            self.log.warning(u"Empty value for {0} on {1}. The xPL message will not be sent".format(w_device, w_type))
             return
         msg = XplMessage()
         msg.set_type("xpl-stat")

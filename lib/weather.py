@@ -61,7 +61,7 @@ class Weather:
         self._stop = stop
         self._get_parameter_for_feature = get_parameter_for_feature
         # the interval is hardcoded as we use an online service
-        self._interval = 30 # minutes
+        self._interval = 15 # minutes
 
     def start_loop(self, devices):
         while not self._stop.isSet():
