@@ -37,6 +37,7 @@ Implements
 import os
 import traceback
 import json
+import time
 # python 2 and 3
 try:
     from urllib.request import urlopen
@@ -164,11 +165,17 @@ class Weather:
 
                 # current_sunset
                 # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
+                #self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
+                sunset = cur['astronomy']['sunset']
+                sunset_time = time.strftime("%H:%M:%S", time.strptime(sunset, "%I:%M %p"))
+                self._callback_sensor_basic(address, "sunset", sunset_time)
 
                 # current_sunrise
                 # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
+                #self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
+                sunrise = cur['astronomy']['sunrise']
+                sunrise_time = time.strftime("%H:%M:%S", time.strptime(sunrise, "%I:%M %p"))
+                self._callback_sensor_basic(address, "sunrise", sunrise_time)
 
 
                 ### send forecast data over xPL

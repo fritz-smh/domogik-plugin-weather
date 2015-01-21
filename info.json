@@ -161,7 +161,7 @@
         "current_sunrise": {
             "name": "Sunrise",
             "incremental" : false,
-            "data_type": "DT_String",
+            "data_type": "DT_Time",
             "conversion": "",
             "timeout" : 3900,
             "history": {
@@ -175,7 +175,7 @@
         "current_sunset": {
             "name": "Sunset",
             "incremental" : false,
-            "data_type": "DT_String",
+            "data_type": "DT_Time",
             "conversion": "",
             "timeout" : 3900,
             "history": {
