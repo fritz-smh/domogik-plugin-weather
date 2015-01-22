@@ -93,6 +93,13 @@ class Weather:
                 data = json.loads(raw_data)
                 self.log.debug(u"Raw data for {0} : {1}".format(address, data))
 
+                # Check that the location is a good one !
+                # Example of a response to a bad location code : Raw data for BEXX0032 : {u'error': {u'lang': u'en-US', u'description': u'Invalid identfier BEXX0032. me AND me.ip are the only supported identifier in this context'}}
+                if 'error' in data:
+                    self.log.error("Error raised by Yahoo weather : {0}".format(data['error']))
+                    return
+
+
                 ### send current data over xPL
                 cur = data['query']['results']['channel']
                 # current_barometer_value
