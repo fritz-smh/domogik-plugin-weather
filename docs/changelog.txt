@@ -2,6 +2,13 @@
 Changelog
 =========
 
+1.1
+===
+
+* Fix : https://github.com/fritz-smh/domogik-plugin-weather/issues/2
+* Fix : https://github.com/fritz-smh/domogik-plugin-weather/issues/1
+* Fix : current temperature history is now storred
+
 1.0
 ===
 

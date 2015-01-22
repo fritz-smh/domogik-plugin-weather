@@ -37,6 +37,7 @@ Implements
 import os
 import traceback
 import json
+import time
 # python 2 and 3
 try:
     from urllib.request import urlopen
@@ -91,6 +92,13 @@ class Weather:
                 raw_data = response.read().decode('utf-8')
                 data = json.loads(raw_data)
                 self.log.debug(u"Raw data for {0} : {1}".format(address, data))
+
+                # Check that the location is a good one !
+                # Example of a response to a bad location code : Raw data for BEXX0032 : {u'error': {u'lang': u'en-US', u'description': u'Invalid identfier BEXX0032. me AND me.ip are the only supported identifier in this context'}}
+                if 'error' in data:
+                    self.log.error("Error raised by Yahoo weather : {0}".format(data['error']))
+                    return
+
 
                 ### send current data over xPL
                 cur = data['query']['results']['channel']
@@ -164,11 +172,17 @@ class Weather:
 
                 # current_sunset
                 # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
+                #self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
+                sunset = cur['astronomy']['sunset']
+                sunset_time = time.strftime("%H:%M:%S", time.strptime(sunset, "%I:%M %p"))
+                self._callback_sensor_basic(address, "sunset", sunset_time)
 
                 # current_sunrise
                 # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
+                #self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
+                sunrise = cur['astronomy']['sunrise']
+                sunrise_time = time.strftime("%H:%M:%S", time.strptime(sunrise, "%I:%M %p"))
+                self._callback_sensor_basic(address, "sunrise", sunrise_time)
 
 
                 ### send forecast data over xPL

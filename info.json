@@ -81,7 +81,7 @@
             "conversion": "",
             "timeout" : 3900,
             "history": {
-                "store" : false,
+                "store" : true,
                 "duplicate" : false,
                 "max": 0,
                 "expire": 0,
@@ -161,7 +161,7 @@
         "current_sunrise": {
             "name": "Sunrise",
             "incremental" : false,
-            "data_type": "DT_String",
+            "data_type": "DT_Time",
             "conversion": "",
             "timeout" : 3900,
             "history": {
@@ -175,7 +175,7 @@
         "current_sunset": {
             "name": "Sunset",
             "incremental" : false,
-            "data_type": "DT_String",
+            "data_type": "DT_Time",
             "conversion": "",
             "timeout" : 3900,
             "history": {
@@ -1082,7 +1082,7 @@
         "domogik_min_version": "0.4.0", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.0"
+        "version": "1.1"
     }, 
     "json_version": 2
 }
