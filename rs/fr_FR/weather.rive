@@ -1,0 +1,230 @@
+> object get_forecast python
+    # i18n
+    ### raw original list
+    #condition_text_list = {
+    #    0 : "tornade",
+    #    1 : "tempête tropicale",
+    #    2 : "ouragan",
+    #    3 : "grosse tempête",
+    #    4 : "orages",
+    #    5 : "pluie et neige",
+    #    6 : "pluie et neige fondue",
+    #    7 : "neige et neige fondue",
+    #    8 : "bruine verglaçante",
+    #    9 : "bruine",
+    #    10 : "pluie verglaçante",
+    #    11 : "grosses averses",
+    #    12 : "grosses averses",
+    #    13 : "averses de neige",
+    #    14 : "légères averses de neige",
+    #    15 : "bourrasques de neige",
+    #    16 : "neige",
+    #    17 : "grêle",
+    #    18 : "neige fondue",
+    #    19 : "poussière",
+    #    20 : "brumeux",
+    #    21 : "brouillard",
+    #    22 : "enfumé",
+    #    23 : "tempête",
+    #    24 : "venteux",
+    #    25 : "froid",
+    #    26 : "nuageux",
+    #    27 : "assez nuageux",
+    #    28 : "assez nuageux",
+    #    29 : "partiellement nuageux",
+    #    30 : "partiellement nuageux",
+    #    31 : "clair",
+    #    32 : "ensoleillé",
+    #    33 : "beau",
+    #    34 : "beau",
+    #    35 : "pluie et grêle",
+    #    36 : "chaud",
+    #    37 : "orages isolés",
+    #    38 : "orages éparses",
+    #    39 : "orages éparses",
+    #    40 : "averses éparses",
+    #    41 : "grosse neige",
+    #    42 : "averses de neige éparses",
+    #    43 : "grosse neige",
+    #    44 : "partiellement nuageux",
+    #    45 : "averses orageuses",
+    #    46 : "averses de neiges",
+    #    47 : "averses orageuses isolées",
+    #    3200 : "inconnu"
+    #}
+    condition_text_list = {
+        0 : u"il y aura une tornade",
+        1 : u"il y aura une tempête tropicale",
+        2 : u"il y aura un ouragan",
+        3 : u"il y aura un grosse tempête",
+        4 : u"il y aura des orages",
+        5 : u"il y aura de la pluie et de la neige",
+        6 : u"il y aura de la pluie et de la neige fondue",
+        7 : u"il y aura de la neige et de la neige fondue",
+        8 : u"il y aura de la bruine verglaçante",
+        9 : u"il y aura de la bruine",
+        10 : u"il y aura de la pluie verglaçante",
+        11 : u"il y aura de grosses averses",
+        12 : u"il y aura de grosses averses",
+        13 : u"il y aura des averses de neige",
+        14 : u"il y aura de légères averses de neige",
+        15 : u"il y aura des bourrasques de neige",
+        16 : u"il neigera",
+        17 : u"il grêlera",
+        18 : u"il y aura de la neige fondue",
+        19 : u"il y aura de la poussière",
+        20 : u"le temps sera brumeux",
+        21 : u"il y aura du brouillard",
+        22 : u"le temps sera enfumé",
+        23 : u"il y aura la tempête",
+        24 : u"il y aura du vent",
+        25 : u"le temps sera froid",
+        26 : u"le ciel sera nuageux",
+        27 : u"le ciel sera assez nuageux",
+        28 : u"le ciel sera assez nuageux",
+        29 : u"le ciel sera partiellement nuageux",
+        30 : u"le ciel sera partiellement nuageux",
+        31 : u"le ciel sera clair",
+        32 : u"le temps sera ensoleillé",
+        33 : u"il fera beau",
+        34 : u"il fera beau ",
+        35 : u"il y aura de la pluie et de la grêle",
+        36 : u"il fera chaud",
+        37 : u"il y aura des orages isolés",
+        38 : u"il y aura des orages éparses",
+        39 : u"il y aura des orages éparses",
+        40 : u"il y aura des averses éparses",
+        41 : u"il y aura de grosses chutes de neige",
+        42 : u"il y aura des averses de neige éparses",
+        43 : u"il y aura de grosses chutes de neige",
+        44 : u"le ciel sera partiellement nuageux",
+        45 : u"il y aura des averses orageuses",
+        46 : u"il y aura des averses de neiges",
+        47 : u"il y aura des averses orageuses isolées",
+        3200 : u"allez savoir quel temps il fera boudiou"
+    }
+
+    days_absolute = {
+        "lundi" : 0,
+        "mardi" : 1,
+        "mercredi" : 2,
+        "jeudi" : 3,
+        "vendredi" : 4,
+        "samedi" : 5,
+        "dimanche" : 6
+    }
+
+    days_relative = {
+        "aujourd'hui" : 0,
+        "du jour" : 0,
+        "demain" : 1,
+        "dans un jour" : 1,
+        "après demain" : 2,
+        "après-demain" : 2,
+        "dans deux jours" : 2,
+        "dans trois jours" : 3,
+        "dans quatre jours" : 4
+    }
+
+    ERROR_UNKNOWN_DAY = u"Je ne connais pas la météo pour cette journée"
+    SEPARATOR = "__SEP__"
+
+    from domogik.butler.brain import get_sensor_value
+    import datetime
+
+
+    tab_args = ' '.join(args).split(SEPARATOR)
+    day = tab_args[0]
+    # si on ne precise pas le lieu, on suppose qu'un seul device existe
+    if len(tab_args) == 1:
+        device_name = None
+    else:
+        device_name = tab_args[1]
+    
+    # if the user give a fullname day... we translate to a number
+    if day in days_absolute:
+        current_day = datetime.datetime.today().weekday()
+        day = (days_absolute[day] - current_day) % 7
+
+    # if the user five a full relative day... we translate to a number
+    if day in days_relative:
+        day = days_relative[day]
+
+    # we check if we are able to give the information about the requested day
+    try:
+        day = int(day)
+        print(day)
+    except:
+        import traceback
+        print(traceback.format_exc())
+        return ERROR_UNKNOWN_DAY
+    if day not in [0, 1, 2, 3, 4]:
+        return ERROR_UNKNOWN_DAY
+        
+
+
+    temp_high = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
+    temp_low = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
+    condition_code = get_sensor_value("DT_String", device_name, "forecast_{0}_condition_code".format(day))
+    condition_text = condition_text_list[int(condition_code)]
+
+    # i18n
+    txt = u""
+    if device_name != None:
+        txt += u"A {0}, demain, ".format(device_name)
+    txt += u"{0}. ".format(condition_text)
+    txt += u"Les températures seront comprises entre {0} et {1} degrés. ".format(temp_low, temp_high)
+
+    return txt
+< object
+
+
+
+// Attention !
+// L'espace dans [de ] est important, sinon "... demain" est interprété "[de] main"
+// oui c'est couillon...
+
+
+// un jour
+
++ shortcut meteo *
+- <call>get_forecast <star></call>
+
++ quel[le] est la meteo
+@ shortcut meteo 0
+
++ quel[le] est la meteo [de ] *
+@ shortcut meteo <star>
+
++ quel[le] sera la meteo [de ] *
+@ shortcut meteo <star>
+
++ quel temps [fait][fera][-][t][-]il *
+@ shortcut meteo <star>
+
++ donne[s][-]moi (les previsions|les previsions meteo|la meteo) [de ] *
+@ shortcut meteo <star2>
+
+// un jour a ...
+
++ shortcut meteo * a *
+- <call>get_forecast <star1>__SEP__<star2></call>
+
++ quel[le] est la meteo a *
+@ shortcut meteo 0 <star>
+
++ quel[le] est la meteo [de ] * a *
+@ shortcut meteo <star1>__SEP__<star2>
+
++ quel[le] sera la meteo [de ] * a *
+@ shortcut meteo <star1>__SEP__<star2>
+
++ quel temps [fait][fera][-][t][-]il * a *
+@ shortcut meteo <star1>__SEP__<star2>
+
++ donne[s][-]moi (les previsions|les previsions meteo|la meteo) [de ] * a *
+@ shortcut meteo <star2>__SEP__<star3>
+
+
+
+
