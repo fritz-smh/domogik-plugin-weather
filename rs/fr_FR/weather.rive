@@ -128,6 +128,7 @@
     }
 
     ERROR_UNKNOWN_DAY = u"Je ne connais pas la météo pour cette journée"
+    ERROR_UNKNOWN_LOCATION = u"Je ne connais pas cette endroit"
     SEPARATOR = "__SEP__"
 
     from domogik.butler.brain import get_sensor_value
@@ -165,6 +166,10 @@
 
 
     temp_high = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
+    # no such device
+    if temp_high == None:
+        return ERROR_UNKNOWN_LOCATION
+
     temp_low = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
     condition_code = get_sensor_value("DT_String", device_name, "forecast_{0}_condition_code".format(day))
     condition_text = condition_text_list[int(condition_code)]
@@ -182,6 +187,17 @@
 
 
 // ##feature## donner la météo
+
+/* ##suggest##
+? .*meteo.*(aujourd.hui|du jour|demain|apres.demain|dans un jour|dans deux jours|dans trois jours|dans quatre jours|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche).*
+@ quelle est la meteo <star1>
+*/
+
+/* ##suggest##
+? .*meteo.*
+@ quelle est la meteo aujourd'hui
+*/
+
 // Attention !
 // L'espace dans [de ] est important, sinon "... demain" est interprété "[de] main"
 // oui c'est couillon...
