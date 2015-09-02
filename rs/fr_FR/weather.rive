@@ -131,57 +131,22 @@
     ERROR_UNKNOWN_LOCATION = u"Je ne connais pas cette endroit"
     SEPARATOR = "__SEP__"
 
-    from domogik.butler.brain import get_sensor_value
-    import datetime
+    cfg_i18n = {}
+    cfg_i18n['condition_text_list'] = condition_text_list
+    cfg_i18n['days_absolute'] = days_absolute
+    cfg_i18n['days_relative'] = days_relative
+    cfg_i18n['ERROR_UNKNOWN_DAY'] = ERROR_UNKNOWN_DAY
+    cfg_i18n['ERROR_UNKNOWN_LOCATION'] = ERROR_UNKNOWN_LOCATION
+    cfg_i18n['SEPARATOR'] = SEPARATOR
 
+    # returned text
+    cfg_i18n['TXT_IN_LOCATION'] = u"A {0}, "
+    cfg_i18n['TXT_CONDITION_AND_TEMPERATURES'] = u"{0}. Les températures seront comprises entre {1} et {2} degrés. "
 
-    tab_args = ' '.join(args).split(SEPARATOR)
-    day = tab_args[0]
-    # si on ne precise pas le lieu, on suppose qu'un seul device existe
-    if len(tab_args) == 1:
-        device_name = None
-    else:
-        device_name = tab_args[1]
-    
-    # if the user give a fullname day... we translate to a number
-    if day in days_absolute:
-        current_day = datetime.datetime.today().weekday()
-        day = (days_absolute[day] - current_day) % 7
+    from domogik_packages.plugin_weather.lib.rs_weather import get_forecast
+    result = get_forecast(cfg_i18n, args)
+    return result
 
-    # if the user five a full relative day... we translate to a number
-    if day in days_relative:
-        day = days_relative[day]
-
-    # we check if we are able to give the information about the requested day
-    try:
-        day = int(day)
-        print(day)
-    except:
-        import traceback
-        print(traceback.format_exc())
-        return ERROR_UNKNOWN_DAY
-    if day not in [0, 1, 2, 3, 4]:
-        return ERROR_UNKNOWN_DAY
-        
-
-
-    temp_high = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
-    # no such device
-    if temp_high == None:
-        return ERROR_UNKNOWN_LOCATION
-
-    temp_low = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
-    condition_code = get_sensor_value("DT_String", device_name, "forecast_{0}_condition_code".format(day))
-    condition_text = condition_text_list[int(condition_code)]
-
-    # i18n
-    txt = u""
-    if device_name != None:
-        txt += u"A {0}, demain, ".format(device_name)
-    txt += u"{0}. ".format(condition_text)
-    txt += u"Les températures seront comprises entre {0} et {1} degrés. ".format(temp_low, temp_high)
-
-    return txt
 < object
 
 
