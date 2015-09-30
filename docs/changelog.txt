@@ -6,6 +6,7 @@ Changelog
 ===
 
 * Butler : add dedicated butler triggers for weather
+* New icon
 
 1.1
 ===
