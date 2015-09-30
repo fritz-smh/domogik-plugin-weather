@@ -182,7 +182,7 @@
 + quel[le] sera la meteo [de ] *
 @ shortcut meteo <star>
 
-+ quel temps [fait][fera][-][t][-]il *
++ quel [est le|sera le] temps [fait][fera][-][t][-][il] *
 @ shortcut meteo <star>
 
 + (dis|donne|donnes)[-]moi (les previsions|les previsions meteo|la meteo) [de ] *
@@ -202,7 +202,7 @@
 + quel[le] sera la meteo [de ] * a *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ quel temps [fait][fera][-][t][-]il * a *
++ quel [est le|sera le] temps [fait][fera][-][t][-][il] * a *
 @ shortcut meteo <star1>__SEP__<star2>
 
 + (dis|donne|donnes)[s][-]moi (les previsions|les previsions meteo|la meteo) [de ] * a *
