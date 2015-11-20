@@ -156,16 +156,16 @@
 
 /* ##suggest##
 ? .*meteo.*(aujourd.hui|du jour|demain|apres.demain|dans un jour|dans deux jours|dans trois jours|dans quatre jours|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche).*
-@ quelle est la meteo <star1>
+@ quelle est la météo <star1>
 */
 
 /* ##suggest##
 ? .*meteo.*
-@ quelle est la meteo aujourd'hui
+@ quelle est la météo aujourd'hui
 */
 
 // alias
-! array weatherLaMeteo = la meteo|le temps|les previsions|les previsions meteo
+! array weatherLaMeteo = la météo|la meteo|le temps|les previsions|les previsions meteo
 ! array weatherFaitIl = fait il|fait-il|fera t il|fera-t-il
 ! array weatherDisMoi = dis moi|donne moi|donnes moi|dis nous|donne nous|donnes nous
 ! array weatherDe = de|le
@@ -179,7 +179,7 @@
 + @quel est @weatherLaMeteo
 @ shortcut meteo 0
 
-+ @quel [est|sera] @weatherLaMeteo @weatherDe *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] *
 @ shortcut meteo <star>
 
 + @quel temps @weatherFaitIl
@@ -191,7 +191,7 @@
 + @weatherDisMoi @weatherLaMeteo
 @ shortcut meteo 0
 
-+ @weatherDisMoi @weatherLaMeteo @weatherDe *
++ @weatherDisMoi @weatherLaMeteo [@weatherDe] *
 @ shortcut meteo <star>
 
 // un jour a ...
@@ -202,7 +202,7 @@
 + @quel est @weatherLaMeteo @weatherA *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @quel [est|sera] @weatherLaMeteo @weatherDe * @weatherA *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
 + @quel temps @weatherFaitIl @weatherA *
@@ -214,7 +214,7 @@
 + @weatherDisMoi @weatherLaMeteo @weatherA *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @weatherDisMoi @weatherLaMeteo @weatherDe * @weatherA *
++ @weatherDisMoi @weatherLaMeteo [@weatherDe] * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
 
