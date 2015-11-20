@@ -89,8 +89,14 @@ def get_forecast(cfg_i18n, args):
     condition_code = get_sensor_value("DT_String", device_name, "forecast_{0}_condition_code".format(day))
     condition_text = condition_text_list[int(condition_code)]
 
+    # find the day label
+    for a_day in days_relative:
+        if days_relative[a_day] == day:
+            day_label = a_day
+            break
+
     # i18n
-    txt = u""
+    txt = u"{0}, ".format(day_label)
     if device_name != None:
         txt += TXT_IN_LOCATION.format(device_name)
     txt += TXT_CONDITION_AND_TEMPERATURES.format(condition_text, temp_low, temp_high)

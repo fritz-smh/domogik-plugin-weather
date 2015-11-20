@@ -1079,10 +1079,10 @@
         "tags": ["weather"],
         "dependencies": [], 
         "description": "Weather plugin based on Yahoo weather informations", 
-        "domogik_min_version": "0.4.1", 
+        "domogik_min_version": "0.5.0", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.2"
+        "version": "1.3"
     }, 
     "json_version": 2
 }
