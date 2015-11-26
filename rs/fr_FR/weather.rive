@@ -132,6 +132,7 @@
     SEPARATOR = "__SEP__"
 
     cfg_i18n = {}
+    cfg_i18n['locale'] = "fr_FR"
     cfg_i18n['condition_text_list'] = condition_text_list
     cfg_i18n['days_absolute'] = days_absolute
     cfg_i18n['days_relative'] = days_relative
@@ -145,7 +146,7 @@
 
     from domogik_packages.plugin_weather.lib.rs_weather import get_forecast
     print("ARGS={0}".format(args))
-    result = get_forecast(cfg_i18n, args)
+    result = get_forecast(cfg_i18n, args, rs.log)
     return result
 
 < object
