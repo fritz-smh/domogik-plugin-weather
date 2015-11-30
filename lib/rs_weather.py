@@ -35,11 +35,12 @@ Implements
 from domogik.butler.brain import get_sensor_value
 import datetime
 
-def get_forecast(cfg_i18n, args):
+def get_forecast(cfg_i18n, args, log):
     """ Function for the brain part
     """
 
     # i18n
+    locale = cfg_i18n['locale']
     condition_text_list = cfg_i18n['condition_text_list']
     days_absolute = cfg_i18n['days_absolute']
     days_relative = cfg_i18n['days_relative']
@@ -80,17 +81,23 @@ def get_forecast(cfg_i18n, args):
         
 
 
-    temp_high = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
+    temp_high = get_sensor_value(log, locale, "DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
     # no such device
     if temp_high == None:
         return ERROR_UNKNOWN_LOCATION
 
-    temp_low = get_sensor_value("DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
-    condition_code = get_sensor_value("DT_String", device_name, "forecast_{0}_condition_code".format(day))
+    temp_low = get_sensor_value(log, locale, "DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
+    condition_code = get_sensor_value(log, locale, "DT_String", device_name, "forecast_{0}_condition_code".format(day))
     condition_text = condition_text_list[int(condition_code)]
 
+    # find the day label
+    for a_day in days_relative:
+        if days_relative[a_day] == day:
+            day_label = a_day
+            break
+
     # i18n
-    txt = u""
+    txt = u"{0}, ".format(day_label)
     if device_name != None:
         txt += TXT_IN_LOCATION.format(device_name)
     txt += TXT_CONDITION_AND_TEMPERATURES.format(condition_text, temp_low, temp_high)

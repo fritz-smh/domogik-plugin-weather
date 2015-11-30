@@ -132,6 +132,7 @@
     SEPARATOR = "__SEP__"
 
     cfg_i18n = {}
+    cfg_i18n['locale'] = "fr_FR"
     cfg_i18n['condition_text_list'] = condition_text_list
     cfg_i18n['days_absolute'] = days_absolute
     cfg_i18n['days_relative'] = days_relative
@@ -140,11 +141,12 @@
     cfg_i18n['SEPARATOR'] = SEPARATOR
 
     # returned text
-    cfg_i18n['TXT_IN_LOCATION'] = u"A {0}, "
+    cfg_i18n['TXT_IN_LOCATION'] = u"à {0}, "
     cfg_i18n['TXT_CONDITION_AND_TEMPERATURES'] = u"{0}. Les températures seront comprises entre {1} et {2} degrés. "
 
     from domogik_packages.plugin_weather.lib.rs_weather import get_forecast
-    result = get_forecast(cfg_i18n, args)
+    print("ARGS={0}".format(args))
+    result = get_forecast(cfg_i18n, args, rs.log)
     return result
 
 < object
@@ -155,58 +157,66 @@
 
 /* ##suggest##
 ? .*meteo.*(aujourd.hui|du jour|demain|apres.demain|dans un jour|dans deux jours|dans trois jours|dans quatre jours|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche).*
-@ quelle est la meteo <star1>
+@ quelle est la météo <star1>
 */
 
 /* ##suggest##
 ? .*meteo.*
-@ quelle est la meteo aujourd'hui
+@ quelle est la météo aujourd'hui
 */
 
-// Attention !
-// L'espace dans [de ] est important, sinon "... demain" est interprété "[de] main"
-// oui c'est couillon...
-
+// alias
+! array weatherLaMeteo = la météo|la meteo|le temps|les previsions|les previsions meteo
+! array weatherFaitIl = fait il|fait-il|fera t il|fera-t-il
+! array weatherDisMoi = dis moi|donne moi|donnes moi|dis nous|donne nous|donnes nous
+! array weatherDe = de|le
+! array weatherA = a|dans
 
 // un jour
 
 + shortcut meteo *
 - <call>get_forecast <star></call>
 
-+ quel[le] est la meteo
++ @quel est @weatherLaMeteo
 @ shortcut meteo 0
 
-+ quel[le] est la meteo [de ] *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] *
 @ shortcut meteo <star>
 
-+ quel[le] sera la meteo [de ] *
++ @quel temps @weatherFaitIl
+@ shortcut meteo 0
+
++ @quel temps @weatherFaitIl *
 @ shortcut meteo <star>
 
-+ quel [est le|sera le] temps [fait][fera][-][t][-][il] *
-@ shortcut meteo <star>
++ @weatherDisMoi @weatherLaMeteo
+@ shortcut meteo 0
 
-+ (dis|donne|donnes)[-]moi (les previsions|les previsions meteo|la meteo) [de ] *
-@ shortcut meteo <star3>
++ @weatherDisMoi @weatherLaMeteo [@weatherDe] *
+@ shortcut meteo <star>
 
 // un jour a ...
 
 + shortcut meteo * a *
 - <call>get_forecast <star1>__SEP__<star2></call>
 
-+ quel[le] est la meteo a *
-@ shortcut meteo 0 <star>
++ @quel est @weatherLaMeteo @weatherA *
+@ shortcut meteo 0__SEP__<star1>
 
-+ quel[le] est la meteo [de ] * a *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ quel[le] sera la meteo [de ] * a *
++ @quel temps @weatherFaitIl @weatherA *
+@ shortcut meteo 0__SEP__<star1>
+
++ @quel temps @weatherFaitIl * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ quel [est le|sera le] temps [fait][fera][-][t][-][il] * a *
-@ shortcut meteo <star1>__SEP__<star2>
++ @weatherDisMoi @weatherLaMeteo @weatherA *
+@ shortcut meteo 0__SEP__<star1>
 
-+ (dis|donne|donnes)[s][-]moi (les previsions|les previsions meteo|la meteo) [de ] * a *
-@ shortcut meteo <star3>__SEP__<star4>
++ @weatherDisMoi @weatherLaMeteo [@weatherDe] * @weatherA *
+@ shortcut meteo <star1>__SEP__<star2>
 
 
 

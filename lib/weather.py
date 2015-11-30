@@ -51,7 +51,7 @@ class Weather:
     """
 
     def __init__(self, log, callback_sensor_basic, callback_weather_forecast, stop, get_parameter_for_feature):
-        """ Init Disk object
+        """ Init Weather object
             @param log : log instance
             @param callback_sensor_basic : callback to send a sensor.basic xpl message
             @param callback_weather_forecast : callback to send a weather.forecast xpl message
