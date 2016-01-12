@@ -9,7 +9,7 @@
             "incremental" : false,
             "data_type": "DT_Pression",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -23,7 +23,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -37,7 +37,7 @@
             "incremental" : false,
             "data_type": "DT_Humidity",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -51,7 +51,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -65,7 +65,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -79,7 +79,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -93,7 +93,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -107,7 +107,7 @@
             "incremental" : false,
             "data_type": "DT_Number",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -121,7 +121,7 @@
             "incremental" : false,
             "data_type": "DT_Number",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -135,7 +135,7 @@
             "incremental" : false,
             "data_type": "DT_Angle",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -149,7 +149,7 @@
             "incremental" : false,
             "data_type": "DT_kmhSpeed",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -163,7 +163,7 @@
             "incremental" : false,
             "data_type": "DT_Time",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -177,7 +177,7 @@
             "incremental" : false,
             "data_type": "DT_Time",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 86400,
             "history": {
                 "store" : true,
                 "duplicate" : false,
@@ -191,7 +191,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -205,7 +205,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -219,7 +219,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -233,7 +233,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -247,7 +247,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -261,7 +261,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -275,7 +275,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -289,7 +289,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -303,7 +303,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -317,7 +317,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -331,7 +331,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -345,7 +345,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -359,7 +359,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -373,7 +373,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -387,7 +387,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -401,7 +401,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -415,7 +415,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -429,7 +429,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -443,7 +443,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -457,7 +457,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -471,7 +471,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -485,7 +485,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -499,7 +499,7 @@
             "incremental" : false,
             "data_type": "DT_Temp",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -513,7 +513,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -527,7 +527,7 @@
             "incremental" : false,
             "data_type": "DT_String",
             "conversion": "",
-            "timeout" : 3900,
+            "timeout" : 0,
             "history": {
                 "store" : false,
                 "duplicate" : false,
@@ -1082,7 +1082,7 @@
         "domogik_min_version": "0.5.0", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.3"
+        "version": "1.4"
     }, 
     "json_version": 2
 }
