@@ -2,6 +2,11 @@
 Changelog
 =========
 
+1.4
+===
+
+* Fix timeout attributes. As value could not change for a few hours, the timeout is now set to 24h on the sensors.
+
 1.3
 ===
 
