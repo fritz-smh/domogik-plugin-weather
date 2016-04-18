@@ -47,6 +47,7 @@ except ImportError:
 YAHOO_WEATHER_URL = "https://query.yahooapis.com/v1/public/yql?q="
 
 def mph_to_kmh(s):
+    # yahoo return some values in mph but in fact they are in km/h... so I commented the conversion
     #return float(s)/1.6093
     return float(s)
 
