@@ -168,7 +168,6 @@
 // alias
 ! array weatherLaMeteo = la météo|la meteo|le temps|les previsions|les previsions meteo
 ! array weatherFaitIl = fait il|fait-il|fera t il|fera-t-il
-! array weatherDisMoi = dis moi|donne moi|donnes moi|dis nous|donne nous|donnes nous
 ! array weatherDe = de|le
 ! array weatherA = a|dans
 
@@ -189,10 +188,10 @@
 + @quel temps @weatherFaitIl *
 @ shortcut meteo <star>
 
-+ @weatherDisMoi @weatherLaMeteo
++ @donneMoi @weatherLaMeteo
 @ shortcut meteo 0
 
-+ @weatherDisMoi @weatherLaMeteo [@weatherDe] *
++ @donneMoi @weatherLaMeteo [@weatherDe] *
 @ shortcut meteo <star>
 
 // un jour a ...
@@ -212,10 +211,10 @@
 + @quel temps @weatherFaitIl * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ @weatherDisMoi @weatherLaMeteo @weatherA *
++ @donneMoi @weatherLaMeteo @weatherA *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @weatherDisMoi @weatherLaMeteo [@weatherDe] * @weatherA *
++ @donneMoi @weatherLaMeteo [@weatherDe] * @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
 
