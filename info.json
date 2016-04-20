@@ -119,11 +119,11 @@
         "current_visibility": {
             "name": "Visibility",
             "incremental" : false,
-            "data_type": "DT_Number",
+            "data_type": "DT_kMeter",
             "conversion": "",
-            "timeout" : 0,
+            "timeout" : 86400,
             "history": {
-                "store" : false,
+                "store" : true,
                 "duplicate" : false,
                 "max": 0,
                 "expire": 0,
@@ -1082,7 +1082,7 @@
         "domogik_min_version": "0.5.0", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.5"
+        "version": "1.6"
     }, 
     "json_version": 2
 }

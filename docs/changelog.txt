@@ -2,6 +2,11 @@
 Changelog
 =========
 
+1.6
+===
+
+* Use a new datatype for visiblity : DT_kMeter (km)
+
 1.5
 ===
 
