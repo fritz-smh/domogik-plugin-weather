@@ -7,7 +7,7 @@
         "current_barometer_value": {
             "name": "Barometer value",
             "incremental" : false,
-            "data_type": "DT_mbarPression",
+            "data_type": "DT_mbarPressure",
             "conversion": "",
             "timeout" : 86400,
             "history": {

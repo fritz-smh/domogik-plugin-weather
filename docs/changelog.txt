@@ -6,6 +6,7 @@ Changelog
 ===
 
 * Use a new datatype for visiblity : DT_kMeter (km)
+* Use a new datatype for pression : DT_mbarPressure (km)
 
 1.5
 ===
