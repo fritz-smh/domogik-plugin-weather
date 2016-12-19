@@ -2,6 +2,19 @@
 Changelog
 =========
 
+1.6
+===
+
+* Use a new datatype for visiblity : DT_kMeter (km).
+* Use a new datatype for pression : DT_mbarPressure (km).
+* Add a new butler interaction : fr_FR : outside temperature.
+* Improve existing butler interactions : fr_FR
+
+1.5
+===
+
+* Fix values since Yahoo Weather API changed in start of 2016
+
 1.4
 ===
 

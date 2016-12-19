@@ -35,8 +35,14 @@ Implements
 from domogik.butler.brain import get_sensor_value
 import datetime
 
+
 def get_forecast(cfg_i18n, args, log):
     """ Function for the brain part
+        @cfg_i18n : i18n data
+        @args : a list of args. 0 => day (0 = current day)
+                                1 => device name (the location name)
+        @log : callback to log object
+                               
     """
 
     # i18n
@@ -48,6 +54,7 @@ def get_forecast(cfg_i18n, args, log):
     ERROR_UNKNOWN_LOCATION = cfg_i18n['ERROR_UNKNOWN_LOCATION']
     SEPARATOR = cfg_i18n['SEPARATOR']
     TXT_IN_LOCATION = cfg_i18n['TXT_IN_LOCATION']
+    TXT_CURRENT_TEMPERATURE = cfg_i18n['TXT_CURRENT_TEMPERATURE']
     TXT_CONDITION_AND_TEMPERATURES = cfg_i18n['TXT_CONDITION_AND_TEMPERATURES']
 
 
@@ -60,13 +67,15 @@ def get_forecast(cfg_i18n, args, log):
         device_name = tab_args[1]
     
     # if the user give a fullname day... we translate to a number
-    if day in days_absolute:
+    buf = dict((k.lower(), v) for k, v in days_absolute.iteritems())
+    if day in buf:
         current_day = datetime.datetime.today().weekday()
-        day = (days_absolute[day] - current_day) % 7
+        day = (buf[day] - current_day) % 7
 
-    # if the user five a full relative day... we translate to a number
-    if day in days_relative:
-        day = days_relative[day]
+    # if the user give a full relative day... we translate to a number
+    buf = dict((k.lower(), v) for k, v in days_relative.iteritems())
+    if day in buf:
+        day = buf[day]
 
     # we check if we are able to give the information about the requested day
     try:
@@ -87,10 +96,12 @@ def get_forecast(cfg_i18n, args, log):
         return ERROR_UNKNOWN_LOCATION
 
     temp_low = get_sensor_value(log, locale, "DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
+    temp_current = get_sensor_value(log, locale, "DT_Temp", device_name, "current_temperature")
     condition_code = get_sensor_value(log, locale, "DT_String", device_name, "forecast_{0}_condition_code".format(day))
     condition_text = condition_text_list[int(condition_code)]
 
     # find the day label
+    print(days_relative)
     for a_day in days_relative:
         if days_relative[a_day] == day:
             day_label = a_day
@@ -101,8 +112,46 @@ def get_forecast(cfg_i18n, args, log):
     if device_name != None:
         txt += TXT_IN_LOCATION.format(device_name)
     txt += TXT_CONDITION_AND_TEMPERATURES.format(condition_text, temp_low, temp_high)
+    # for the current day, give also the current temperature.
+    if day == 0:
+        txt += TXT_CURRENT_TEMPERATURE.format(temp_current)
 
     return txt
 
+
+
+def get_temperature(cfg_i18n, args, log):
+    """ Function for the brain part
+        @cfg_i18n : i18n data
+        @args : a list of args.  0 => device name (the location name)
+        @log : callback to log object
+                               
+    """
+
+    # i18n
+    locale = cfg_i18n['locale']
+    TXT_IN_LOCATION = cfg_i18n['TXT_IN_LOCATION']
+    TXT_TEMPERATURE = cfg_i18n['TXT_TEMPERATURE']
+    ERROR_UNKNOWN_LOCATION = cfg_i18n['ERROR_UNKNOWN_LOCATION']
+
+    print(args) 
+    if len(args) > 0:
+        device_name = ' '.join(args)
+    else:
+        device_name = None
+    
+    temp = get_sensor_value(log, locale, "DT_Temp", device_name, "current_temperature")
+    # no such device
+    if temp == None:
+        return ERROR_UNKNOWN_LOCATION
+
+    # i18n
+    txt = u""
+    # the if below is not used currently. Keeped for later usage
+    if device_name != None:
+        txt += TXT_IN_LOCATION.format(device_name)
+    txt += TXT_TEMPERATURE.format(temp)
+
+    return txt
 
 

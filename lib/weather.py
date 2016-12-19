@@ -46,6 +46,14 @@ except ImportError:
 
 YAHOO_WEATHER_URL = "https://query.yahooapis.com/v1/public/yql?q="
 
+def mph_to_kmh(s):
+    # yahoo return some values in mph but in fact they are in km/h... so I commented the conversion
+    #return float(s)/1.6093
+    return float(s)
+
+def fahrenheit_to_celcius(f):
+    return "{0:.0f}".format((float(f)-32)/1.8)
+
 class Weather:
     """ Weather.com
     """
@@ -85,7 +93,9 @@ class Weather:
                 # grab weather data
 
                 # More informations here : https://developer.yahoo.com/weather/#get-started
-                query = "select * from weather.forecast where woeid = {0} and u = 'c'".format(address)
+                # 04/2016 : we do the query in the english metric and convert them manually instead of doing the query in metric system
+                # We do this because yahoo weather was giving badly converted values in metric system
+                query = "select * from weather.forecast where woeid = {0} and u = 'f'".format(address)
                 weather_url = "{0}{1}&format=json".format(YAHOO_WEATHER_URL, query)
                 self.log.debug(u"Url called is {0}".format(weather_url))
                 response = urlopen(weather_url)
@@ -104,6 +114,10 @@ class Weather:
                 cur = data['query']['results']['channel']
                 # current_barometer_value
                 # weather.com # self._callback_sensor_basic(address, "pressure", cur['barometer']['reading'])
+
+                # 04/2016 : dirty fix to fix yahoo issues in celcius...
+                # yahoo convert 1013 inHg to milibar for example but 1013 is already in milibar
+                # so nothing to convert :)
                 self._callback_sensor_basic(address, "pressure", cur['atmosphere']['pressure'])
 
                 # current_barometer_direction
@@ -116,7 +130,10 @@ class Weather:
 
                 # current_feels_like
                 # weather.com # self._callback_sensor_basic(address, "temp_feels_like", cur['feels_like'])
-                self._callback_sensor_basic(address, "temp_feels_like", cur['wind']['chill'])
+
+                # 04/2016 : dirty fix to fix yahoo issues in celcius...
+                # yahoo give the value in °F instead of °C
+                self._callback_sensor_basic(address, "temp_feels_like", fahrenheit_to_celcius(cur['wind']['chill']))
 
                 # current_humidity
                 # weather.com # self._callback_sensor_basic(address, "humidity", cur['humidity'])
@@ -136,7 +153,7 @@ class Weather:
 
                 # current_temperature
                 # weather.com # self._callback_sensor_basic(address, "temp", cur['temperature'])
-                self._callback_sensor_basic(address, "temp", cur['item']['condition']['temp'])
+                self._callback_sensor_basic(address, "temp", fahrenheit_to_celcius(cur['item']['condition']['temp']))
 
                 # current_text
                 # weather.com # self._callback_sensor_basic(address, "text", cur['text'])
@@ -152,7 +169,7 @@ class Weather:
 
                 # current_visibility
                 # weather.com # self._callback_sensor_basic(address, "visibility", cur['visibility'])
-                self._callback_sensor_basic(address, "visibility", cur['atmosphere']['visibility'])
+                self._callback_sensor_basic(address, "visibility", mph_to_kmh(cur['atmosphere']['visibility']))
 
                 # current_wind_direction
                 # weather.com # self._callback_sensor_basic(address, "direction", cur['wind']['direction'])
@@ -164,7 +181,7 @@ class Weather:
 
                 # current_wind_speed
                 # weather.com # self._callback_sensor_basic(address, "speed", cur['wind']['speed'])
-                self._callback_sensor_basic(address, "speed", cur['wind']['speed'])
+                self._callback_sensor_basic(address, "speed", mph_to_kmh(cur['wind']['speed']))
 
                 # current_wind_text
                 # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
@@ -192,8 +209,8 @@ class Weather:
                     data = {'day' : day_num,
                             'device' : address,
                             'day-name' : day['day'],
-                            'temperature-high' : day['high'],
-                            'temperature-low' : day['low'],
+                            'temperature-high' : fahrenheit_to_celcius(day['high']),
+                            'temperature-low' : fahrenheit_to_celcius(day['low']),
                             'condition-text' : day['text'],
                             'condition-code' : day['code']}
                     self._callback_weather_forecast(data)

@@ -105,30 +105,30 @@
     }
 
     days_absolute = {
-        "lundi" : 0,
-        "mardi" : 1,
-        "mercredi" : 2,
-        "jeudi" : 3,
-        "vendredi" : 4,
-        "samedi" : 5,
-        "dimanche" : 6
+        "Lundi" : 0,
+        "Mardi" : 1,
+        "Mercredi" : 2,
+        "Jeudi" : 3,
+        "Vendredi" : 4,
+        "Samedi" : 5,
+        "Dimanche" : 6
     }
 
     days_relative = {
-        "aujourd'hui" : 0,
-        "aujourd hui" : 0,
-        "du jour" : 0,
-        "demain" : 1,
-        "dans un jour" : 1,
-        "après demain" : 2,
-        "après-demain" : 2,
-        "dans deux jours" : 2,
-        "dans trois jours" : 3,
-        "dans quatre jours" : 4
+        "Aujourd'hui" : 0,
+        "Aujourd hui" : 0,
+        "Du jour" : 0,
+        "Demain" : 1,
+        "Dans un jour" : 1,
+        "Après demain" : 2,
+       "Après-demain" : 2,
+        "Dans deux jours" : 2,
+        "Dans trois jours" : 3,
+        "Dans quatre jours" : 4
     }
 
     ERROR_UNKNOWN_DAY = u"Je ne connais pas la météo pour cette journée"
-    ERROR_UNKNOWN_LOCATION = u"Je ne connais pas cette endroit"
+    ERROR_UNKNOWN_LOCATION = u"Je ne connais pas cet endroit"
     SEPARATOR = "__SEP__"
 
     cfg_i18n = {}
@@ -142,6 +142,7 @@
 
     # returned text
     cfg_i18n['TXT_IN_LOCATION'] = u"à {0}, "
+    cfg_i18n['TXT_CURRENT_TEMPERATURE'] = u"La température actuelle est de {0} degrés."
     cfg_i18n['TXT_CONDITION_AND_TEMPERATURES'] = u"{0}. Les températures seront comprises entre {1} et {2} degrés. "
 
     from domogik_packages.plugin_weather.lib.rs_weather import get_forecast
@@ -149,9 +150,46 @@
     result = get_forecast(cfg_i18n, args, rs.log)
     return result
 
-< object
+< object  
+
+> object get_temperature python
+    ERROR_UNKNOWN_LOCATION = u"Je ne connais pas cet endroit"
+
+    cfg_i18n = {}
+    cfg_i18n['locale'] = "fr_FR"
+    cfg_i18n['ERROR_UNKNOWN_LOCATION'] = ERROR_UNKNOWN_LOCATION
+
+    # returned text
+    cfg_i18n['TXT_IN_LOCATION'] = u"à {0}, "
+    cfg_i18n['TXT_TEMPERATURE'] = u"La température est de {0} degrés."
+
+    from domogik_packages.plugin_weather.lib.rs_weather import get_temperature
+    print("ARGS={0}".format(args))
+    result = get_temperature(cfg_i18n, args, rs.log)
+    return result
+< object  
 
 
+
+// temperature /////////////////////////////////////////////////////
+
+! array weatherDehors = de dehors|dehors|a l exterieur|exterieure
+
++ shortcut meteotemperature
+- <call>get_temperature</call>
+
++ combien [fait il|fait-il|il fait] (@weatherDehors)
+@shortcut meteotemperature
+
++ @donneMoi la temperature (@weatherDehors)
+@shortcut meteotemperature 
+
+// note : il n'est pas necessaire de traiter 'donne moi la temperature a <ville>' car le package brain_base le traite deja nativement. Ici on ajoute juste le manque pour utiliser les termes 'dehors, ...'
+
+
+
+
+// meteo generaliste ///////////////////////////////////////////////
 
 // ##feature## donner la météo
 
@@ -168,9 +206,10 @@
 // alias
 ! array weatherLaMeteo = la météo|la meteo|le temps|les previsions|les previsions meteo
 ! array weatherFaitIl = fait il|fait-il|fera t il|fera-t-il
-! array weatherDisMoi = dis moi|donne moi|donnes moi|dis nous|donne nous|donnes nous
 ! array weatherDe = de|le
 ! array weatherA = a|dans
+! array weatherJour = lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|aujourd'hui|ajourd hui|du jour|demain|dans un jour|après demain|après-demain|dans deux jours|dans trois jours|dans quatre jours
+    
 
 // un jour
 
@@ -180,19 +219,19 @@
 + @quel est @weatherLaMeteo
 @ shortcut meteo 0
 
-+ @quel [est|sera] @weatherLaMeteo [@weatherDe] *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] (@weatherJour)
 @ shortcut meteo <star>
 
 + @quel temps @weatherFaitIl
 @ shortcut meteo 0
 
-+ @quel temps @weatherFaitIl *
++ @quel temps @weatherFaitIl (@weatherJour)
 @ shortcut meteo <star>
 
-+ @weatherDisMoi @weatherLaMeteo
++ @donneMoi @weatherLaMeteo
 @ shortcut meteo 0
 
-+ @weatherDisMoi @weatherLaMeteo [@weatherDe] *
++ @donneMoi @weatherLaMeteo [@weatherDe] (@weatherJour)
 @ shortcut meteo <star>
 
 // un jour a ...
@@ -200,23 +239,32 @@
 + shortcut meteo * a *
 - <call>get_forecast <star1>__SEP__<star2></call>
 
-+ @quel est @weatherLaMeteo @weatherA *
++ @quel [est|sera] @weatherLaMeteo [@weatherA|@weatherDe] *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @quel [est|sera] @weatherLaMeteo [@weatherDe] * @weatherA *
++ @quel [est|sera] @weatherLaMeteo [@weatherDe] (@weatherJour) [@weatherA|@weatherDe] *
 @ shortcut meteo <star1>__SEP__<star2>
+
++ @quel [est|sera] @weatherLaMeteo [@weatherA|@weatherDe] * [@weatherDe] (@weatherJour)
+@ shortcut meteo <star2>__SEP__<star1>
 
 + @quel temps @weatherFaitIl @weatherA *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @quel temps @weatherFaitIl * @weatherA *
++ @quel temps @weatherFaitIl (@weatherJour) @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ @weatherDisMoi @weatherLaMeteo @weatherA *
++ @quel temps @weatherFaitIl @weatherA * (@weatherJour)
+@ shortcut meteo <star2>__SEP__<star1>
+
++ @donneMoi @weatherLaMeteo [@weatherA|@weatherDe] *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @weatherDisMoi @weatherLaMeteo [@weatherDe] * @weatherA *
++ @donneMoi @weatherLaMeteo [@weatherDe] (@weatherJour) [@weatherA|@weatherDe] *
 @ shortcut meteo <star1>__SEP__<star2>
+
++ @donneMoi @weatherLaMeteo [@weatherA|@weatherDe] * [@weatherDe] (@weatherJour)
+@ shortcut meteo <star2>__SEP__<star1>
 
 
 
