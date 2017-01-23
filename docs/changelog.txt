@@ -2,6 +2,13 @@
 Changelog
 =========
 
+1.7
+===
+
+* This release needs at least Domogik 0.5.2 !
+* Add compliance with the last butler improvment for performances
+* Improve allowed sentences (fr_FR)
+
 1.6
 ===
 

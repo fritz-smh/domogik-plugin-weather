@@ -36,12 +36,13 @@ from domogik.butler.brain import get_sensor_value
 import datetime
 
 
-def get_forecast(cfg_i18n, args, log):
+def get_forecast(cfg_i18n, args, log, devices):
     """ Function for the brain part
         @cfg_i18n : i18n data
         @args : a list of args. 0 => day (0 = current day)
                                 1 => device name (the location name)
         @log : callback to log object
+        @devices : devices list in the butler memory
                                
     """
 
@@ -90,14 +91,14 @@ def get_forecast(cfg_i18n, args, log):
         
 
 
-    temp_high = get_sensor_value(log, locale, "DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
+    temp_high = get_sensor_value(log, devices, locale, "DT_Temp", device_name, "forecast_{0}_temperature_high".format(day))
     # no such device
     if temp_high == None:
         return ERROR_UNKNOWN_LOCATION
 
-    temp_low = get_sensor_value(log, locale, "DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
-    temp_current = get_sensor_value(log, locale, "DT_Temp", device_name, "current_temperature")
-    condition_code = get_sensor_value(log, locale, "DT_String", device_name, "forecast_{0}_condition_code".format(day))
+    temp_low = get_sensor_value(log, devices, locale, "DT_Temp", device_name, "forecast_{0}_temperature_low".format(day))
+    temp_current = get_sensor_value(log, devices, locale, "DT_Temp", device_name, "current_temperature")
+    condition_code = get_sensor_value(log, devices, locale, "DT_String", device_name, "forecast_{0}_condition_code".format(day))
     condition_text = condition_text_list[int(condition_code)]
 
     # find the day label
@@ -120,11 +121,12 @@ def get_forecast(cfg_i18n, args, log):
 
 
 
-def get_temperature(cfg_i18n, args, log):
+def get_temperature(cfg_i18n, args, log, devices):
     """ Function for the brain part
         @cfg_i18n : i18n data
         @args : a list of args.  0 => device name (the location name)
         @log : callback to log object
+        @devices : devices list in the butler memory
                                
     """
 
@@ -140,7 +142,7 @@ def get_temperature(cfg_i18n, args, log):
     else:
         device_name = None
     
-    temp = get_sensor_value(log, locale, "DT_Temp", device_name, "current_temperature")
+    temp = get_sensor_value(log, devices, locale, "DT_Temp", device_name, "current_temperature")
     # no such device
     if temp == None:
         return ERROR_UNKNOWN_LOCATION

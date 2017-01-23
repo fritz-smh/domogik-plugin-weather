@@ -147,7 +147,7 @@
 
     from domogik_packages.plugin_weather.lib.rs_weather import get_forecast
     print("ARGS={0}".format(args))
-    result = get_forecast(cfg_i18n, args, rs.log)
+    result = get_forecast(cfg_i18n, args, rs.log, rs.devices)
     return result
 
 < object  
@@ -165,7 +165,7 @@
 
     from domogik_packages.plugin_weather.lib.rs_weather import get_temperature
     print("ARGS={0}".format(args))
-    result = get_temperature(cfg_i18n, args, rs.log)
+    result = get_temperature(cfg_i18n, args, rs.log, rs.devices)
     return result
 < object  
 
@@ -206,6 +206,7 @@
 // alias
 ! array weatherLaMeteo = la météo|la meteo|le temps|les previsions|les previsions meteo
 ! array weatherFaitIl = fait il|fait-il|fera t il|fera-t-il
+! array weatherIlFait = il fait|il fera|il y a|il y aura
 ! array weatherDe = de|le
 ! array weatherA = a|dans
 ! array weatherJour = lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|aujourd'hui|ajourd hui|du jour|demain|dans un jour|après demain|après-demain|dans deux jours|dans trois jours|dans quatre jours
@@ -222,16 +223,22 @@
 + @quel [est|sera] @weatherLaMeteo [@weatherDe] (@weatherJour)
 @ shortcut meteo <star>
 
-+ @quel temps @weatherFaitIl
++ @quel temps (@weatherFaitIl|@weatherIlFait)
 @ shortcut meteo 0
 
-+ @quel temps @weatherFaitIl (@weatherJour)
++ @quel temps (@weatherFaitIl|@weatherIlFait) (@weatherJour)
 @ shortcut meteo <star>
 
 + @donneMoi @weatherLaMeteo
 @ shortcut meteo 0
 
 + @donneMoi @weatherLaMeteo [@weatherDe] (@weatherJour)
+@ shortcut meteo <star>
+
++ @weatherIlFait @quel temps
+@ shortcut meteo 0
+
++ @weatherIlFait @quel temps (@weatherJour)
 @ shortcut meteo <star>
 
 // un jour a ...
@@ -248,13 +255,13 @@
 + @quel [est|sera] @weatherLaMeteo [@weatherA|@weatherDe] * [@weatherDe] (@weatherJour)
 @ shortcut meteo <star2>__SEP__<star1>
 
-+ @quel temps @weatherFaitIl @weatherA *
++ @quel temps (@weatherFaitIl|@weatherIlFait) @weatherA *
 @ shortcut meteo 0__SEP__<star1>
 
-+ @quel temps @weatherFaitIl (@weatherJour) @weatherA *
++ @quel temps (@weatherFaitIl|@weatherIlFait) (@weatherJour) @weatherA *
 @ shortcut meteo <star1>__SEP__<star2>
 
-+ @quel temps @weatherFaitIl @weatherA * (@weatherJour)
++ @quel temps (@weatherFaitIl|@weatherIlFait) @weatherA * (@weatherJour)
 @ shortcut meteo <star2>__SEP__<star1>
 
 + @donneMoi @weatherLaMeteo [@weatherA|@weatherDe] *
@@ -266,6 +273,14 @@
 + @donneMoi @weatherLaMeteo [@weatherA|@weatherDe] * [@weatherDe] (@weatherJour)
 @ shortcut meteo <star2>__SEP__<star1>
 
++ @weatherIlFait @quel temps @weatherA *
+@ shortcut meteo 0__SEP__<star1> 
+
++ @weatherIlFait @quel temps (@weatherJour) @weatherA *
+@ shortcut meteo <star1>__SEP__<star2>
+
++ @weatherIlFait @quel temps @weatherA * (@weatherJour) 
+@ shortcut meteo <star2>__SEP__<star1>
 
 
 
