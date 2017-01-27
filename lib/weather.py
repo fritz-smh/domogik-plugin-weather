@@ -72,20 +72,34 @@ class Weather:
         self._get_parameter = get_parameter
         # the interval is hardcoded as we use an online service
         self._interval = 15 # minutes
+        self.reload_request = True
 
     def set_devices(self, devices):
         """ Called by the bin part when starting or devices added/deleted/updated
         """
         self.devices = devices
+        # to restart the loop
+        self.reload_request = True
+
+        self.log.info(u"Devices reloaded. The new devices will be checked in less than 30 seconds.")
 
     def start_loop(self):
+        # To allow a quick devices reload, we split the X minutes interval in smaller interval.
+
+        num_30seconds = 0
+        max_num_30seconds = self._interval * 2
         while not self._stop.isSet():
+            print("tic")
             try:
-                self.get_weather()
+                num_30seconds += 1
+                if num_30seconds >= max_num_30seconds or self.reload_request:
+                    num_30seconds = 0
+                    self.reload_request = False
+                    self.get_weather()
+                    self.log.info(u"Wait for {0} minutes (unless some device change happen)".format(self._interval))
             except:
                 self.log.error(u"Error while calling get_weather : {0}".format(traceback.format_exc()))
-            self.log.info(u"Wait for {0} minutes".format(self._interval))
-            self._stop.wait(self._interval*60)
+            self._stop.wait(30)
 
     def get_weather(self):
         for a_device in self.devices:
