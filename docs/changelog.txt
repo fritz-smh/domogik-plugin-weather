@@ -2,6 +2,14 @@
 Changelog
 =========
 
+1.8
+===
+
+* The plugin is no more a xpl plugin
+* Handle Yahoo errors
+* Add forecast up to 9 days!
+* Handle live devices creation
+
 1.7
 ===
 

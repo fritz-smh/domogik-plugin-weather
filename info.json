@@ -535,490 +535,359 @@
                 "expire": 0,
                 "round_value": 0
             }
-        }
-    },
-    "xpl_stats": {
-        "current_barometer_value": {
-            "name": "Barometer value",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "pressure"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_barometer_value"
-                        }
-                    ]
-               }
         },
-        "current_feels_like": {
-            "name": "Feels like",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "temp_feels_like"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_feels_like"
-                        }
-                    ]
-               }
-        },
-        "current_humidity": {
-            "name": "Humidity",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "humidity"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_humidity"
-                        }
-                    ]
-               }
-        },
-        "current_last_updated": {
-            "name": "Last updated",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "last_updated"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_last_updated"
-                        }
-                    ]
-               }
-        },
-        "current_station": {
-            "name": "Current station",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "current_station"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_station"
-                        }
-                    ]
-               }
-        },
-        "current_temperature": {
-            "name": "Temperature",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "temp"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_temperature"
-                        }
-                    ]
-               }
-        },
-        "current_text": {
-            "name": "Weather description",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "text"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_text"
-                        }
-                    ]
-               }
-        },
-        "current_code": {
-            "name": "Weather description code",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "code"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_code"
-                        }
-                    ]
-               }
-        },
-        "current_visibility": {
-            "name": "Visibility",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "visibility"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_visibility"
-                        }
-                    ]
-               }
-        },
-        "current_wind_direction": {
-            "name": "Wind direction",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "direction"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_wind_direction"
-                        }
-                    ]
-               }
-        },
-        "current_wind_speed": {
-            "name": "Wind speed",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "speed"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_wind_speed"
-                        }
-                    ]
-               }
-        },
-        "current_sunrise": {
-            "name": "Sunrise",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "sunrise"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_sunrise"
-                        }
-                    ]
-               }
-        },
-        "current_sunset": {
-            "name": "Sunset",
-            "schema": "sensor.basic",
-            "parameters": {
-                    "static": [
-            {
-                "key": "type",
-                "value": "sunset"
-            }
-            ],
-                    "device": [],
-                    "dynamic": [
-                        {
-                             "key": "current",
-                             "ignore_values": "",
-                             "sensor": "current_sunset"
-                        }
-                    ]
-               }
-        },
-        "forecast_day_0": {
-            "name": "Forecast day 0",
-            "schema": "weather.forecast",
-            "parameters": {
-                "static": [
-                    {
-                        "key": "provider",
-                        "value": "yahoo weather"
-                    },
-                    {
-                        "key": "day",
-                        "value": "0"
-                    }
-                ],
-                "device": [],
-                "dynamic": [
-                    {
-                        "key": "day-name",
-                        "ignore_values": "",
-                        "sensor": "forecast_0_day"
-                    },
-                    {
-                        "key": "temperature-high",
-                        "ignore_values": "",
-                        "sensor": "forecast_0_temperature_high"
-                    },
-                    {
-                        "key": "temperature-low",
-                        "ignore_values": "",
-                        "sensor": "forecast_0_temperature_low"
-                    },
-                    {
-                        "key": "condition-text",
-                        "ignore_values": "",
-                        "sensor": "forecast_0_condition_text"
-                    },
-                    {
-                        "key": "condition-code",
-                        "ignore_values": "",
-                        "sensor": "forecast_0_condition_code"
-                    }
-                ]
+        "forecast_5_day": {
+            "name": "Day 5 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
             }
         },
-        "forecast_day_1": {
-            "name": "Forecast day 1",
-            "schema": "weather.forecast",
-            "parameters": {
-                "static": [
-                    {
-                        "key": "provider",
-                        "value": "yahoo weather"
-                    },
-                    {
-                        "key": "day",
-                        "value": "1"
-                    }
-                ],
-                "device": [],
-                "dynamic": [
-                    {
-                        "key": "day-name",
-                        "ignore_values": "",
-                        "sensor": "forecast_1_day"
-                    },
-                    {
-                        "key": "temperature-high",
-                        "ignore_values": "",
-                        "sensor": "forecast_1_temperature_high"
-                    },
-                    {
-                        "key": "temperature-low",
-                        "ignore_values": "",
-                        "sensor": "forecast_1_temperature_low"
-                    },
-                    {
-                        "key": "condition-text",
-                        "ignore_values": "",
-                        "sensor": "forecast_1_condition_text"
-                    },
-                    {
-                        "key": "condition-code",
-                        "ignore_values": "",
-                        "sensor": "forecast_1_condition_code"
-                    }
-                ]
+        "forecast_5_temperature_high": {
+            "name": "Day 5 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
             }
         },
-        "forecast_day_2": {
-            "name": "Forecast day 2",
-            "schema": "weather.forecast",
-            "parameters": {
-                "static": [
-                    {
-                        "key": "provider",
-                        "value": "yahoo weather"
-                    },
-                    {
-                        "key": "day",
-                        "value": "2"
-                    }
-                ],
-                "device": [],
-                "dynamic": [
-                    {
-                        "key": "day-name",
-                        "ignore_values": "",
-                        "sensor": "forecast_2_day"
-                    },
-                    {
-                        "key": "temperature-high",
-                        "ignore_values": "",
-                        "sensor": "forecast_2_temperature_high"
-                    },
-                    {
-                        "key": "temperature-low",
-                        "ignore_values": "",
-                        "sensor": "forecast_2_temperature_low"
-                    },
-                    {
-                        "key": "condition-text",
-                        "ignore_values": "",
-                        "sensor": "forecast_2_condition_text"
-                    },
-                    {
-                        "key": "condition-code",
-                        "ignore_values": "",
-                        "sensor": "forecast_2_condition_code"
-                    }
-                ]
+        "forecast_5_temperature_low": {
+            "name": "Day 5 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
             }
         },
-        "forecast_day_3": {
-            "name": "Forecast day 3",
-            "schema": "weather.forecast",
-            "parameters": {
-                "static": [
-                    {
-                        "key": "provider",
-                        "value": "yahoo weather"
-                    },
-                    {
-                        "key": "day",
-                        "value": "3"
-                    }
-                ],
-                "device": [],
-                "dynamic": [
-                    {
-                        "key": "day-name",
-                        "ignore_values": "",
-                        "sensor": "forecast_3_day"
-                    },
-                    {
-                        "key": "temperature-high",
-                        "ignore_values": "",
-                        "sensor": "forecast_3_temperature_high"
-                    },
-                    {
-                        "key": "temperature-low",
-                        "ignore_values": "",
-                        "sensor": "forecast_3_temperature_low"
-                    },
-                    {
-                        "key": "condition-text",
-                        "ignore_values": "",
-                        "sensor": "forecast_3_condition_text"
-                    },
-                    {
-                        "key": "condition-code",
-                        "ignore_values": "",
-                        "sensor": "forecast_3_condition_code"
-                    }
-                ]
+        "forecast_5_condition_text": {
+            "name": "Day 5 - Condition text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
             }
         },
-        "forecast_day_4": {
-            "name": "Forecast day 4",
-            "schema": "weather.forecast",
-            "parameters": {
-                "static": [
-                    {
-                        "key": "provider",
-                        "value": "yahoo weather"
-                    },
-                    {
-                        "key": "day",
-                        "value": "4"
-                    }
-                ],
-                "device": [],
-                "dynamic": [
-                    {
-                        "key": "day-name",
-                        "ignore_values": "",
-                        "sensor": "forecast_4_day"
-                    },
-                    {
-                        "key": "temperature-high",
-                        "ignore_values": "",
-                        "sensor": "forecast_4_temperature_high"
-                    },
-                    {
-                        "key": "temperature-low",
-                        "ignore_values": "",
-                        "sensor": "forecast_4_temperature_low"
-                    },
-                    {
-                        "key": "condition-text",
-                        "ignore_values": "",
-                        "sensor": "forecast_4_condition_text"
-                    },
-                    {
-                        "key": "condition-code",
-                        "ignore_values": "",
-                        "sensor": "forecast_4_condition_code"
-                    }
-                ]
+        "forecast_5_condition_code": {
+            "name": "Day 5 - Condition code",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_6_day": {
+            "name": "Day 6 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_6_temperature_high": {
+            "name": "Day 6 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_6_temperature_low": {
+            "name": "Day 6 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_6_condition_text": {
+            "name": "Day 6 - Condition text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_6_condition_code": {
+            "name": "Day 6 - Condition code",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_7_day": {
+            "name": "Day 7 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_7_temperature_high": {
+            "name": "Day 7 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_7_temperature_low": {
+            "name": "Day 7 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_7_condition_text": {
+            "name": "Day 7 - Condition text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_7_condition_code": {
+            "name": "Day 7 - Condition code",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_8_day": {
+            "name": "Day 8 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_8_temperature_high": {
+            "name": "Day 8 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_8_temperature_low": {
+            "name": "Day 8 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_8_condition_text": {
+            "name": "Day 8 - Condition text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_8_condition_code": {
+            "name": "Day 8 - Condition code",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_9_day": {
+            "name": "Day 9 - Day of week",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_9_temperature_high": {
+            "name": "Day 9 - Temperature_high",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_9_temperature_low": {
+            "name": "Day 9 - Temperature_low",
+            "incremental" : false,
+            "data_type": "DT_Temp",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_9_condition_text": {
+            "name": "Day 9 - Condition text",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "forecast_9_condition_code": {
+            "name": "Day 9 - Condition code",
+            "incremental" : false,
+            "data_type": "DT_String",
+            "conversion": "",
+            "timeout" : 0,
+            "history": {
+                "store" : false,
+                "duplicate" : false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
             }
         }
     },
+    "xpl_stats": {},
     "device_types": {
         "weather.weather": {
             "description": "Current weather conditions from Yahoo heather", 
@@ -1062,11 +931,36 @@
                         "forecast_4_temperature_high",
                         "forecast_4_temperature_low",
                         "forecast_4_condition_text",
-                        "forecast_4_condition_code"],
+                        "forecast_4_condition_code",
+                        "forecast_5_day",
+                        "forecast_5_temperature_high",
+                        "forecast_5_temperature_low",
+                        "forecast_5_condition_text",
+                        "forecast_5_condition_code",
+                        "forecast_6_day",
+                        "forecast_6_temperature_high",
+                        "forecast_6_temperature_low",
+                        "forecast_6_condition_text",
+                        "forecast_6_condition_code",
+                        "forecast_7_day",
+                        "forecast_7_temperature_high",
+                        "forecast_7_temperature_low",
+                        "forecast_7_condition_text",
+                        "forecast_7_condition_code",
+                        "forecast_8_day",
+                        "forecast_8_temperature_high",
+                        "forecast_8_temperature_low",
+                        "forecast_8_condition_text",
+                        "forecast_8_condition_code",
+                        "forecast_9_day",
+                        "forecast_9_temperature_high",
+                        "forecast_9_temperature_low",
+                        "forecast_9_condition_text",
+                        "forecast_9_condition_code"],
             "parameters": [
                 {
                     "key": "device",
-                    "xpl" : true,
+                    "xpl" : false,
                     "description": "Location code. Example for Paris : 615702",
                     "type": "string"
                 }
@@ -1082,7 +976,7 @@
         "domogik_min_version": "0.5.2", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.7"
+        "version": "1.8"
     }, 
     "json_version": 2
 }

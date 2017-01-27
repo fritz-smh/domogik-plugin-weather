@@ -30,13 +30,12 @@ Implements
 - WeatherManager
 
 @author: Fritz <fritz.smh@gmail.com>
-@copyright: (C) 2007-2014 Domogik project
+@copyright: (C) 2007-2017 Domogik project
 @license: GPL(v3)
 @organization: Domogik
 """
 
-from domogik.xpl.common.xplmessage import XplMessage
-from domogik.xpl.common.plugin import XplPlugin
+from domogik.xpl.common.plugin import Plugin
 
 from domogik_packages.plugin_weather.lib.weather import Weather
 #from domogik_packages.plugin_weather.lib.weather import WeatherException
@@ -44,14 +43,14 @@ import threading
 import traceback
 
 
-class WeatherManager(XplPlugin):
+class WeatherManager(Plugin):
     """ Get weather informations
     """
 
     def __init__(self):
         """ Init plugin
         """
-        XplPlugin.__init__(self, name='weather')
+        Plugin.__init__(self, name='weather')
 
         # check if the plugin is configured. If not, this will stop the plugin and log an error
         #if not self.check_configured():
@@ -60,52 +59,58 @@ class WeatherManager(XplPlugin):
         # get the devices list
         # for this plugin, if no devices are created we won't be able to use devices.
         self.devices = self.get_device_list(quit_if_no_device = True)
+        self.sensors = self.get_sensors(self.devices)
 
-
+        # Init the weather manager
+        self.need_reload = threading.Event()
         self.weather_manager = Weather(self.log, 
-                                       self.send_xpl_sensor_basic, 
-                                       self.send_xpl_weather_forecast, 
+                                       self.send_sensor,
                                        self.get_stop(), 
-                                       self.get_parameter_for_feature)
-        # Start getting weather informations
+                                       self.get_parameter)
+        self.weather_manager.set_devices(self.devices)
+
+        # Start a thread to get weather informations
         weather_process = threading.Thread(None,
                                     self.weather_manager.start_loop,
                                     "weather-process",
-                                    (self.devices,),
+                                    (),
                                     {})
         self.register_thread(weather_process)
         weather_process.start()
 
+        # Call the start_engine function when there is some device added/deleted/updated
+        self.register_cb_update_devices(self.reload_devices)
+       
+
         self.ready()
 
-    def send_xpl_sensor_basic(self, w_device, w_type, w_value):
-        """ Send xPL message on network
-        """
-        self.log.debug(u"Values for {0} on {1} : {2}".format(w_device, w_type, w_value))
-        if w_value == "" or w_value is None:
-            self.log.warning(u"Empty value for {0} on {1}. The xPL message will not be sent".format(w_device, w_type))
-            return
-        msg = XplMessage()
-        msg.set_type("xpl-stat")
-        msg.set_schema("sensor.basic")
-        msg.add_data({"device" : w_device})
-        msg.add_data({"type" : w_type})
-        msg.add_data({"current" : w_value})
-        self.myxpl.send(msg)
 
-    def send_xpl_weather_forecast(self, data):
-        """ Send xPL message on network
+    def reload_devices(self, devices):
+        """ Called on startup or when some devices are added/deleted/updated
         """
-        self.log.debug(u"Forecast data : {0}".format(data))
-        msg = XplMessage()
-        msg.set_type("xpl-stat")
-        msg.set_schema("weather.forecast")
-        msg.add_data({"provider" : "yahoo weather"})
-        for key in data:
-            val = data[key]
-            if val != "":
-                msg.add_data({key : val})
-        self.myxpl.send(msg)
+        self.weather_manager.set_devices(devices)
+        self.devices = devices
+        self.sensors = self.get_sensors(devices)
+
+
+
+    def send_sensor(self, device_id, sensor_values):
+        """Send pub message over MQ
+           @device_address : the device id
+           @device_address : the sensor values : {'name' : value}
+        """
+        data = {}
+        value = None
+        try:
+            for a_sensor in sensor_values:
+                sensor_id = self.sensors[device_id][a_sensor]
+                value = sensor_values[a_sensor]
+                self.log.info(u"Preparing to send value for sensor id:{0}, name: {1}, value: {2}" .format(sensor_id, a_sensor, value))
+                data[sensor_id] = value
+        except:
+            self.log.error(u"An error occured while preparing the sensor '{0}' value '{1}' to be send. The error is : {2}".format(a_sensor, value, traceback.format_exc()))
+        self._pub.send_event('client.sensor', data)
+
 
 if __name__ == "__main__":
     WeatherManager()
