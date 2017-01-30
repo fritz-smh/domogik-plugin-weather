@@ -233,14 +233,16 @@ class Weather:
                     # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
                     #self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
                     sunset = cur['astronomy']['sunset']
-                    sunset_time = time.strftime("%H:%M:%S", time.strptime(sunset, "%I:%M %p"))
+                    #sunset_time = time.strftime("%H:%M:%S", time.strptime(sunset, "%I:%M %p"))
+                    sunset_time = self.convert_to_24(sunset)
                     #self._callback_sensor_basic(address, "sunset", sunset_time)
     
                     # current_sunrise
                     # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
                     #self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
                     sunrise = cur['astronomy']['sunrise']
-                    sunrise_time = time.strftime("%H:%M:%S", time.strptime(sunrise, "%I:%M %p"))
+                    #sunrise_time = time.strftime("%H:%M:%S", time.strptime(sunrise, "%I:%M %p"))
+                    sunrise_time = self.convert_to_24(sunrise)
                     #self._callback_sensor_basic(address, "sunrise", sunrise_time)
     
     
@@ -278,3 +280,19 @@ class Weather:
                     self.log.info(u"Data successfully sent for {0}".format(address))
                 except:
                     self.log.error(u"Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
+
+    def convert_to_24(self, time):
+        """Converts 12 hours time format to 24 hours
+        """
+        time = time.replace(' ', '')
+        time, half_day = time[:-2], time[-2:].lower()
+        if half_day == 'am':
+            return time
+        elif half_day == 'pm':
+            split = time.find(':')
+            if split == -1:
+                split = None
+            return str(int(time[:split]) + 12) + time[split:]
+        else:
+            raise ValueError("Didn't finish with AM or PM.")
+
