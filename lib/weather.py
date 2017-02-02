@@ -281,18 +281,22 @@ class Weather:
                 except:
                     self.log.error(u"Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
 
-    def convert_to_24(self, time):
+    def convert_to_24(self,time):
         """Converts 12 hours time format to 24 hours
         """
         time = time.replace(' ', '')
         time, half_day = time[:-2], time[-2:].lower()
+        if int(time[2:]) < 10:
+            minutes = "0" + time[2:]
+        else:
+            minutes = time[2:]
         if half_day == 'am':
-            return time
+            return str(time[:2] + minutes)
         elif half_day == 'pm':
             split = time.find(':')
             if split == -1:
                 split = None
-            return str(int(time[:split]) + 12) + time[split:]
+            return str(int(time[:split]) + 12) + ":" +minutes
         else:
             raise ValueError("Didn't finish with AM or PM.")
 
