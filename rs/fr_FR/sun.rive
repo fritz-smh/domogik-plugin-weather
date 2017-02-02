@@ -1,0 +1,38 @@
+
++ shortcut sunrise
+- Le soleil se lève à <call>get_sensor_value_per_reference fr_FR, DT_Time, , current_sunrise, None</call>
+
++ shortcut sunset
+- Le soleil se couche à <call>get_sensor_value_per_reference fr_FR, DT_Time, , current_sunset, None</call>
+
+
+//****** sunrise
+
++ a @quel heure [le soleil] se leve [le soleil]
+@ shortcut sunrise
+
++ a @quel heure le soleil se leve[-]t il
+@ shortcut sunrise
+
+// pour usage avec @peuxTu
++ quand [le soleil] se leve [le soleil]
+@ shortcut sunrise
+
++ l heure de lever du soleil
+@ shortcut sunrise
+
+//****** sunset
+
++ a @quel heure [le soleil] se couche [le soleil]
+@ shortcut sunrise
+
++ a @quel heure le soleil se couche[-]t il
+@ shortcut sunrise
+
+// pour usage avec @peuxTu
++ quand [le soleil] se couche [le soleil]
+@ shortcut sunrise
+
++ l heure de coucher du soleil
+@ shortcut sunrise
+

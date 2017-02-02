@@ -9,6 +9,7 @@ Changelog
 * Handle Yahoo errors
 * Add forecast up to 9 days!
 * Handle live devices creation
+* Add Butler sentences for sunrise and sunset (fr_FR)
 
 1.7
 ===
