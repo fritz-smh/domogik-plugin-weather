@@ -281,7 +281,7 @@ class Weather:
                 except:
                     self.log.error(u"Error while getting data from Yahoo weather : {0}".format(traceback.format_exc()))
 
-    def convert_to_24(time):
+    def convert_to_24(self,time):
         """Converts 12 hours time format to 24 hours
         """
         time = time.replace(' ', '')
