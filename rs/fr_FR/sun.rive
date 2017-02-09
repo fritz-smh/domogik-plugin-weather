@@ -24,15 +24,15 @@
 //****** sunset
 
 + a @quel heure [le soleil] se couche [le soleil]
-@ shortcut sunrise
+@ shortcut sunset
 
 + a @quel heure le soleil se couche[-]t il
-@ shortcut sunrise
+@ shortcut sunset
 
 // pour usage avec @peuxTu
 + quand [le soleil] se couche [le soleil]
-@ shortcut sunrise
+@ shortcut sunset
 
 + l heure de coucher du soleil
-@ shortcut sunrise
+@ shortcut sunset
 
