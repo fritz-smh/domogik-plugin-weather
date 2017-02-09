@@ -5,7 +5,7 @@ Changelog
 1.8
 ===
 
-* The plugin is no more a xpl plugin
+* The plugin is no more a xpl plugin : you will need **to delete the previous devices and create new ones**!
 * Handle Yahoo errors
 * Add forecast up to 9 days!
 * Handle live devices creation

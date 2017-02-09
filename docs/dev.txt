@@ -20,29 +20,8 @@ Only the following sensors are configured to store the history:
 Timeout on sensors
 ==================
 
-All sensors have a timeout set to 65 minutes : as the interval between each check on weather.com is set to 30min, we let the plugin to encounter 1 failure.
+All sensors have a timeout set to 65 minutes : as the interval between each check on weather.com is set to 30 min, we let the plugin to encounter 1 failure.
 
-Forecast data
-=============
-
-A specific xPL schema has been defined for the forecast: 
-
-* **xpl-stat** ::
-
-    xpl-stat
-    {
-    ...
-    }
-    weather.forecast
-    {
-        provider=yahoo weather
-        day=<number of the day : 0....>
-        day-name=...
-        temperature-high=...
-        temperature-low=...
-        condition-text=...
-        condition-code=...
-    }
 
 Condition codes
 ===============
