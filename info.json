@@ -973,10 +973,10 @@
         "tags": ["weather"],
         "dependencies": [], 
         "description": "Weather plugin based on Yahoo weather informations", 
-        "domogik_min_version": "0.6.0", 
+        "domogik_min_version": "0.5.2", 
         "name": "weather", 
         "type": "plugin", 
-        "version": "1.8"
+        "version": "1.9"
     }, 
     "json_version": 2
 }

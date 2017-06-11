@@ -89,7 +89,6 @@ class Weather:
         num_30seconds = 0
         max_num_30seconds = self._interval * 2
         while not self._stop.isSet():
-            print("tic")
             try:
                 num_30seconds += 1
                 if num_30seconds >= max_num_30seconds or self.reload_request:
@@ -154,96 +153,21 @@ class Weather:
     
     
                     cur = data['query']['results']['channel']
-                    # current_barometer_value
-                    # weather.com # self._callback_sensor_basic(address, "pressure", cur['barometer']['reading'])
     
-                    # 04/2016 : dirty fix to fix yahoo issues in celcius...
-                    # yahoo convert 1013 inHg to milibar for example but 1013 is already in milibar
-                    # so nothing to convert :)
-                    #self._callback_sensor_basic(address, "pressure", cur['atmosphere']['pressure'])
+                    try:
+                        sunset_time = None
+                        sunrise_time = None
+
+                        # current_sunset
+                        sunset = cur['astronomy']['sunset']
+                        sunset_time = self.convert_to_24(sunset)
     
-                    # current_barometer_direction
-                    # weather.com # self._callback_sensor_basic(address, "barometer_direction", cur['barometer']['direction'])
-                    # yahoo weather # N/A
-    
-                    # current_dewpoint
-                    # weather.com # self._callback_sensor_basic(address, "temp_dewpoint", cur['dewpoint'])
-                    # yahoo weather # N/A
-    
-                    # current_feels_like
-                    # weather.com # self._callback_sensor_basic(address, "temp_feels_like", cur['feels_like'])
-    
-                    # 04/2016 : dirty fix to fix yahoo issues in celcius...
-                    # yahoo give the value in °F instead of °C
-                    #self._callback_sensor_basic(address, "temp_feels_like", fahrenheit_to_celcius(cur['wind']['chill']))
-    
-                    # current_humidity
-                    # weather.com # self._callback_sensor_basic(address, "humidity", cur['humidity'])
-                    #self._callback_sensor_basic(address, "humidity", cur['atmosphere']['humidity'])
-    
-                    # current_last_updated
-                    # weather.com # self._callback_sensor_basic(address, "last_updated", cur['last_updated'])
-                    #self._callback_sensor_basic(address, "last_updated", cur['lastBuildDate'])
-    
-                    # current_moon_phase
-                    # weather.com # self._callback_sensor_basic(address, "moon_phase", cur['moon_phase']['text'])
-                    # yahoo weather # N/A
-    
-                    # current_station
-                    # weather.com # self._callback_sensor_basic(address, "current_station", cur['station'])
-                    #self._callback_sensor_basic(address, "current_station", "{0} ({1})".format(cur['location']['city'], cur['location']['country']))
-    
-                    # current_temperature
-                    # weather.com # self._callback_sensor_basic(address, "temp", cur['temperature'])
-                    #self._callback_sensor_basic(address, "temp", fahrenheit_to_celcius(cur['item']['condition']['temp']))
-    
-                    # current_text
-                    # weather.com # self._callback_sensor_basic(address, "text", cur['text'])
-                    #self._callback_sensor_basic(address, "text", cur['item']['condition']['text'])
-    
-                    # current_code
-                    # weather.com # N/A
-                    #self._callback_sensor_basic(address, "code", cur['item']['condition']['code'])
-    
-                    # current_uv
-                    # weather.com # self._callback_sensor_basic(address, "uv", cur['uv']['index'])
-                    # yahoo weather # N/A
-    
-                    # current_visibility
-                    # weather.com # self._callback_sensor_basic(address, "visibility", cur['visibility'])
-                    #self._callback_sensor_basic(address, "visibility", mph_to_kmh(cur['atmosphere']['visibility']))
-    
-                    # current_wind_direction
-                    # weather.com # self._callback_sensor_basic(address, "direction", cur['wind']['direction'])
-                    #self._callback_sensor_basic(address, "direction", cur['wind']['direction'])
-    
-                    # current_wind_gust
-                    # weather.com # self._callback_sensor_basic(address, "speed_gust", cur['wind']['gust'])
-                    # yahoo weather # N/A
-    
-                    # current_wind_speed
-                    # weather.com # self._callback_sensor_basic(address, "speed", cur['wind']['speed'])
-                    #self._callback_sensor_basic(address, "speed", mph_to_kmh(cur['wind']['speed']))
-    
-                    # current_wind_text
-                    # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                    # yahoo weather # N/A
-    
-                    # current_sunset
-                    # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                    #self._callback_sensor_basic(address, "sunset", cur['astronomy']['sunset'])
-                    sunset = cur['astronomy']['sunset']
-                    #sunset_time = time.strftime("%H:%M:%S", time.strptime(sunset, "%I:%M %p"))
-                    sunset_time = self.convert_to_24(sunset)
-                    #self._callback_sensor_basic(address, "sunset", sunset_time)
-    
-                    # current_sunrise
-                    # weather.com # self._callback_sensor_basic(address, "wind_text", cur['wind']['text'])
-                    #self._callback_sensor_basic(address, "sunrise", cur['astronomy']['sunrise'])
-                    sunrise = cur['astronomy']['sunrise']
-                    #sunrise_time = time.strftime("%H:%M:%S", time.strptime(sunrise, "%I:%M %p"))
-                    sunrise_time = self.convert_to_24(sunrise)
-                    #self._callback_sensor_basic(address, "sunrise", sunrise_time)
+                        # current_sunrise
+                        sunrise = cur['astronomy']['sunrise']
+                        sunrise_time = self.convert_to_24(sunrise)
+                    except:
+                        self.log.error(u"Error while getting sunset and sunrise times... This may occur with API changes") 
+                        # it happened several time.... cf fixes in releases 1.7 and 1.9
     
     
                     ### send_data
@@ -286,10 +210,9 @@ class Weather:
         """
         time = time.replace(' ', '')
         time, half_day = time[:-2], time[-2:].lower()
-        if int(time[2:]) < 10:
+        hours, minutes = time.split(":")
+        if int(minutes) < 10:
             minutes = "0" + time[2:]
-        else:
-            minutes = time[2:]
         if half_day == 'am':
             return str(time[:2] + minutes)
         elif half_day == 'pm':
